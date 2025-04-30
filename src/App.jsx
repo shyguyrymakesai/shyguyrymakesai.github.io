@@ -2,50 +2,130 @@ import React from "react";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 text-gray-800 p-6">
-      <section className="max-w-3xl mx-auto bg-white shadow-2xl rounded-2xl p-10 space-y-8">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900">Ryan Martinez</h1>
-          <p className="text-sm text-gray-500 mt-1">
-            AI Automation Developer &mdash; LangChain • FastAPI • Python | Based in Indiana (Open to Remote)
-          </p>
-        </div>
-
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-2">About Me</h2>
-          <p>
-            I'm a developer with a passion for agentic AI and automation. After studying Computer Science and Economics at the University of Pennsylvania, I focused on building systems that reduce friction in communication and workflows. Most recently, I designed and deployed an AI assistant capable of handling appointment bookings, service interactions, and follow-ups entirely through WhatsApp.
-          </p>
-          <p className="mt-2">
-            I thrive on solving real-world problems with fast, functional tech — especially when it involves LLMs, APIs, and clean backend architecture.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-2">Featured Project: AI Appointment Assistant</h2>
-          <ul className="list-disc list-inside space-y-1">
-            <li>Integrated WhatsApp messaging with a FastAPI backend</li>
-            <li>Used LangChain for tool-based reasoning and memory-driven responses</li>
-            <li>Custom routing logic to determine user intent and invoke appropriate actions</li>
-            <li>Dockerized and locally deployable for small businesses</li>
-            <li>Focused on reliability, user-state persistence, and natural conversation flow</li>
+    <main className="min-h-screen font-sans scroll-smooth">
+      {/* Navigation Bar */}
+      <header className="fixed top-0 left-0 w-full bg-white shadow z-50">
+        <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+          <div className="text-lg font-bold">Ryan Martinez</div>
+          <ul className="flex space-x-6 text-sm text-gray-700">
+            <li><a href="#project" className="hover:text-blue-600 transition">Project</a></li>
+            <li><a href="#about" className="hover:text-blue-600 transition">About</a></li>
+            <li><a href="#resume" className="hover:text-blue-600 transition">Resume</a></li>
+            <li><a href="#contact" className="hover:text-blue-600 transition">Contact</a></li>
           </ul>
-          <p className="mt-2 text-sm text-gray-500">Codebase and demo available on request.</p>
-        </section>
+        </nav>
+      </header>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-2">Contact</h2>
-          <p className="leading-relaxed">
-            <strong>Email:</strong> <a href="mailto:ryan.martinez2@protonmail.com" className="text-blue-600">ryan.martinez2@protonmail.com</a><br />
-            <strong>GitHub:</strong> <span className="text-gray-700">(Insert GitHub Link Here)</span><br />
-            <strong>Location:</strong> Muncie, Indiana &mdash; Remote-Ready
+      <div className="pt-24">
+        {/* Hero Section */}
+        <section className="bg-white py-24 px-6 text-center transition-opacity duration-500 ease-in-out">
+          <h1 className="text-5xl font-bold mb-4">Ryan Martinez</h1>
+          <p className="text-lg text-gray-600 max-w-xl mx-auto">
+            AI Engineer focused on building agentic LLM systems. I recently built and deployed a WhatsApp-based AI assistant using LangChain, FastAPI, and memory routing — solo.
           </p>
+          <div className="mt-6">
+            <a href="#project" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
+              View My Project
+            </a>
+          </div>
         </section>
 
-        <footer className="text-xs text-center text-gray-400 pt-6 border-t border-gray-200">
-          &copy; {new Date().getFullYear()} Ryan Martinez. Built with React & Tailwind. Deployed via GitHub Pages.
+        {/* Project Section */}
+        <section id="project" className="bg-gray-50 py-20 px-6 transition-transform duration-500 ease-in-out">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-4">Featured Project: AI Appointment Assistant</h2>
+            <p className="text-gray-700 mb-6">
+              A full-stack AI assistant deployed via WhatsApp. It handles appointment scheduling, memory-based interaction, and natural service explanations using LangChain, FastAPI, and Docker.
+            </p>
+            <ul className="flex flex-wrap justify-center gap-3 text-sm text-gray-500">
+              <li className="bg-white px-3 py-1 rounded border">LangChain</li>
+              <li className="bg-white px-3 py-1 rounded border">FastAPI</li>
+              <li className="bg-white px-3 py-1 rounded border">Tool Routing</li>
+              <li className="bg-white px-3 py-1 rounded border">Memory</li>
+              <li className="bg-white px-3 py-1 rounded border">Docker</li>
+            </ul>
+          </div>
+        </section>
+
+        {/* About Me Section */}
+        <section id="about" className="bg-white py-20 px-6 text-center transition-all duration-500 ease-in-out">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4">About Me</h2>
+            <p className="text-gray-700 leading-relaxed">
+              I'm a developer with a passion for autonomous AI systems. After leaving the University of Pennsylvania to refocus and rebuild, I dedicated myself to building tools that actually work — fast, smart, and solo. I'm actively seeking remote or Indiana-based roles in AI engineering, automation, or backend systems.
+            </p>
+          </div>
+        </section>
+
+        {/* Resume Section */}
+        <section id="resume" className="bg-gray-50 py-20 px-6">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">Resume</h2>
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Technical Projects</h3>
+                <p className="font-medium">AI Assistant (Solo Project) | Python, FastAPI, LangChain, WhatsApp API</p>
+                <ul className="list-disc list-inside text-gray-700 ml-4">
+                  <li>Built a WhatsApp-based AI assistant handling bookings, service explanations, and multi-turn memory</li>
+                  <li>Implemented LangChain routing with FastAPI backend and deployed locally with Docker</li>
+                  <li>Used JSON-based memory system and custom error-handling architecture</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Professional Experience</h3>
+                <div className="space-y-4">
+                  <div>
+                    <p className="font-medium">Cybersecurity Analyst Intern – Anderson University | May – Aug 2023</p>
+                    <ul className="list-disc list-inside text-gray-700 ml-4">
+                      <li>Drafted a 200-page System Security Plan (SSP) for SMB clients with co-led team</li>
+                      <li>Co-authored 3 white papers on threat vectors and InfoSec practices</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium">Undergraduate Research Assistant – Dr. Wang’s Lab, UPenn | May – Aug 2020</p>
+                    <ul className="list-disc list-inside text-gray-700 ml-4">
+                      <li>Supported ML research on patient outcome forecasting using healthcare datasets</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium">Data Engineering / ML Intern – Jobcase Inc. | June – Aug 2019</p>
+                    <ul className="list-disc list-inside text-gray-700 ml-4">
+                      <li>Built ETL pipelines and a prototype data lake using Apache Spark</li>
+                      <li>Visualized engagement insights for civic outreach partnerships</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Technical Skills</h3>
+                <p className="text-gray-700">
+                  <strong>Languages & Tools:</strong> Python, Java, Bash, HTML/CSS, Git, Docker, Unix CLI<br/>
+                  <strong>Frameworks & Libraries:</strong> FastAPI, LangChain, TensorFlow, Pandas, Apache Spark<br/>
+                  <strong>Systems & Dev:</strong> REST APIs, LLM Tool Routing, Uvicorn, Virtualenv, VS Code, Postman
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Education</h3>
+                <p className="text-gray-700">
+                  University of Pennsylvania<br/>
+                  Completed 33.5 CUs toward B.S. in Computer Science (Engineering) & Economics (Wharton)<br/>
+                  2018–2024
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <footer id="contact" className="bg-gray-100 py-16 px-6 text-center text-sm text-gray-600 transition-opacity duration-500 ease-in-out">
+          <p>📧 ryan.martinez2@protonmail.com</p>
+          <p>🔗 GitHub: <a href="https://github.com/shyguyrymakesai" className="text-blue-600 hover:underline">shyguyrymakesai</a></p>
+          <p className="mt-4">Let’s collaborate — or just say hi.</p>
         </footer>
-      </section>
+      </div>
     </main>
   );
 }
