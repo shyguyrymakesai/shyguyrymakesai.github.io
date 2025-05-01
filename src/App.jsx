@@ -1,4 +1,6 @@
-import React from "react";
+import React from 'react';
+import heroImage from './assets/hero.jpeg';
+
 
 export default function HomePage() {
   return (
@@ -18,32 +20,58 @@ export default function HomePage() {
 
       <div className="pt-24">
         {/* Hero Section */}
-        <section className="bg-white py-24 px-6 text-center transition-opacity duration-500 ease-in-out">
-          <h1 className="text-5xl font-bold mb-4">Ryan Martinez</h1>
-          <p className="text-lg text-gray-600 max-w-xl mx-auto">
-            AI Engineer focused on building agentic LLM systems. I recently built and deployed a WhatsApp-based AI assistant using LangChain, FastAPI, and memory routing — solo.
-          </p>
-          <div className="mt-6">
-            <a href="#project" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
-              View My Project
-            </a>
+        <section className="relative bg-white py-24 px-6 text-center transition-opacity duration-500 ease-in-out">
+          <img
+            src={heroImage}
+            alt="Background"
+            className="absolute inset-0 w-full h-full object-contain opacity-35 pointer-events-none"
+          />
+          <div className="relative z-10">
+            <h1 className="text-5xl font-bold mb-4">Ryan Martinez</h1>
+            <p className="text-lg text-gray-600 max-w-xl mx-auto">
+              AI Engineer focused on building agentic LLM systems. I recently built and deployed a WhatsApp-based AI assistant using LangChain, FastAPI, and memory routing — solo.
+            </p>
+            <div className="mt-6">
+              <a href="#project" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
+                View My Project
+              </a>
+            </div>
           </div>
         </section>
 
         {/* Project Section */}
-        <section id="project" className="bg-gray-50 py-20 px-6 transition-transform duration-500 ease-in-out">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Featured Project: AI Appointment Assistant</h2>
-            <p className="text-gray-700 mb-6">
-              A full-stack AI assistant deployed via WhatsApp. It handles appointment scheduling, memory-based interaction, and natural service explanations using LangChain, FastAPI, and Docker.
-            </p>
-            <ul className="flex flex-wrap justify-center gap-3 text-sm text-gray-500">
-              <li className="bg-white px-3 py-1 rounded border">LangChain</li>
-              <li className="bg-white px-3 py-1 rounded border">FastAPI</li>
-              <li className="bg-white px-3 py-1 rounded border">Tool Routing</li>
-              <li className="bg-white px-3 py-1 rounded border">Memory</li>
-              <li className="bg-white px-3 py-1 rounded border">Docker</li>
-            </ul>
+        <section id="project" className="bg-gray-100 py-20 px-6 transition-transform duration-500 ease-in-out">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            {/* Image/Preview */}
+            <div className="rounded-xl overflow-hidden shadow-lg border bg-white">
+              <img
+                src="/Demo_SS.png"
+                alt="AI Assistant Demo"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+
+            {/* Description */}
+            <div>
+              <h2 className="text-3xl font-bold mb-4">AI Appointment Assistant</h2>
+              <p className="text-gray-700 mb-6 leading-relaxed">
+                A full-stack AI assistant deployed through WhatsApp. It handles appointment scheduling, natural language queries, memory-driven follow-ups, and service walkthroughs.
+                Built with LangChain for tool routing, FastAPI for backend logic, and deployed via Docker for real-world testing.
+              </p>
+              <ul className="flex flex-wrap gap-3 text-sm text-gray-600 mb-6">
+                {['LangChain', 'FastAPI', 'Tool Routing', 'Memory', 'Docker'].map(tag => (
+                  <li key={tag} className="bg-white px-3 py-1 rounded-full shadow-sm border hover:bg-blue-50 hover:text-blue-700 transition">
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="https://github.com/shyguyrymakesai/whatsapp-agent" // replace with actual repo if needed
+                className="inline-block px-6 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-md transition"
+              >
+                View Code on GitHub
+              </a>
+            </div>
           </div>
         </section>
 
