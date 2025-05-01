@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import heroImage from '../assets/hero.jpg';
 
 export default function HomePage() {
@@ -7,13 +8,15 @@ export default function HomePage() {
       {/* Navigation Bar */}
       <header className="fixed top-0 left-0 w-full bg-white shadow z-50">
         <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-          <div className="text-lg font-bold">Ryan Martinez</div>
+          <div className="text-lg font-bold">
+            <Link to="/">Ryan Martinez</Link>
+          </div>
           <ul className="flex space-x-6 text-sm text-gray-700">
             <li><a href="#project" className="hover:text-blue-600 transition">Project</a></li>
             <li><a href="#about" className="hover:text-blue-600 transition">About</a></li>
             <li><a href="#resume" className="hover:text-blue-600 transition">Resume</a></li>
             <li><a href="#contact" className="hover:text-blue-600 transition">Contact</a></li>
-            <li><a href="/agents" className="hover:text-blue-600 transition">Agents</a></li>
+            <li><Link to="/agents" className="hover:text-blue-600 transition">Agents</Link></li>
           </ul>
         </nav>
       </header>
@@ -32,12 +35,12 @@ export default function HomePage() {
               AI Engineer focused on building agentic LLM systems. I recently built and deployed a WhatsApp-based AI assistant using LangChain, FastAPI, and memory routing — solo.
             </p>
             <div className="mt-6">
-                <a
-    href="/agents"
-    className="inline-block px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition"
-  >
-    View My Agents
-  </a>
+              <Link
+                to="/agents"
+                className="inline-block px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition"
+              >
+                View My Agents
+              </Link>
             </div>
           </div>
         </section>
@@ -48,7 +51,7 @@ export default function HomePage() {
             {/* Image/Preview */}
             <div className="rounded-xl overflow-hidden shadow-lg border bg-white">
               <img
-                src="/Demo_SS.png"
+                src="/shyguyrymakesai.github.io/Demo_SS.png"
                 alt="AI Assistant Demo"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
