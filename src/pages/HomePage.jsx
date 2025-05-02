@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import heroImage from '../assets/hero.jpg';
+import demoImage from '../assets/Demo_SS.png';
 
 export default function HomePage() {
   return (
@@ -51,7 +52,7 @@ export default function HomePage() {
             {/* Image/Preview */}
             <div className="rounded-xl overflow-hidden shadow-lg border bg-white">
               <img
-                src="/shyguyrymakesai.github.io/Demo_SS.png"
+                src={demoImage}
                 alt="AI Assistant Demo"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />

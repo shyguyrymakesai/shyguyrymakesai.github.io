@@ -23,7 +23,7 @@ export default function AgentProfile() {
       <section className="relative bg-gradient-to-r from-blue-50 to-blue-100 py-24 text-center px-6">
         <div className="max-w-2xl mx-auto">
           <img
-            src="/agents/whatsapp-avatar.jpg"
+            src={whastapp-avatar}
             alt={`${agent.name} avatar`}
             className="h-24 w-24 rounded-full mx-auto mb-6 border-4 border-white shadow-lg object-cover"
           />
