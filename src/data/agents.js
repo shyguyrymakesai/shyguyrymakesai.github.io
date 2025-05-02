@@ -21,6 +21,7 @@ themeColor: {
   border: "border-yellow-200",      // Light accents like dividers or card borders
   bgTint: "bg-yellow-50",           // Subtle background sections
 },
+themeGradient: "from-yellow-100 to-yellow-600",
     capabilities: [
       "Schedule and confirm appointments via WhatsApp",
       "Route users to the right service or team",
@@ -42,7 +43,8 @@ themeColor: {
       accentHover: "hover:bg-purple-700",
       border: "border-purple-200",
       bgTint: "bg-purple-50",
-    }, // warm, intelligent amber
+    }, // purple rain
+    themeGradient: "from-purple-100 to-purple-600",
     capabilities: [
       "Sort and categorize incoming emails",
       "Draft context-aware responses",
@@ -64,7 +66,8 @@ themeColor: {
       accentHover: "hover:bg-cyan-700",
       border: "border-cyan-100",
       bgTint: "bg-cyan-50",
-    }, // deep green / dev-tool tone
+    }, // cold-cyan
+    themeGradient: "from-cyan-100 to-cyan-600",
     capabilities: [
       "Scan PRs for bugs, smells, and edge cases",
       "Comment in clean, human-like language",
