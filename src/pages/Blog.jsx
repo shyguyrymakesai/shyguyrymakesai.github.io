@@ -42,9 +42,9 @@ const BlogCard = ({ post }) => {
       onHoverStart={() => setExpanded(true)}
       onHoverEnd={() => setExpanded(false)}
       transition={{ type: "spring", stiffness: 100 }}
-      className="relative p-[2px] w-full sm:max-w-full md:max-w-sm rounded-2xl bg-gradient-to-r from-fuchsia-500 via-purple-500 to-cyan-400 hover:shadow-pink-500/50"
+      className="relative w-full max-w-[90vw] sm:max-w-[80vw] md:max-w-sm rounded-2xl bg-gradient-to-r from-fuchsia-500 via-purple-500 to-cyan-400 hover:shadow-pink-500/50 p-[2px] flex flex-col h-full"
     >
-      <div className="bg-black bg-opacity-50 rounded-[14px] p-5 text-white shadow-2xl hover:cursor-pointer">
+      <div className="h-full w-full bg-black bg-opacity-50 rounded-[inherit] p-5 text-white shadow-2xl hover:cursor-pointer">
         <div className="text-4xl mb-2">{post.emoji}</div>
         <h2 className="text-xl font-bold mb-1 neon-text-gradient">{post.title}</h2>
         <div className="flex flex-wrap gap-2 mb-2">
@@ -57,7 +57,9 @@ const BlogCard = ({ post }) => {
             </span>
           ))}
         </div>
-        <p className="text-sm opacity-80 italic">{post.snippet}</p>
+        <p className="text-sm opacity-80 italic min-h-[3.5rem]">
+          {post.snippet}
+        </p>
         <AnimatePresence>
           {expanded && (
             <motion.div
@@ -74,6 +76,8 @@ const BlogCard = ({ post }) => {
     </motion.div>
   );
 };
+
+
 
 export default function Blog() {
   const [randomPost, setRandomPost] = useState(null);
