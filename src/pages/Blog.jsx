@@ -33,21 +33,6 @@ const fakePosts = [
   },
 ];
 
-const spotifyPlaylists = [
-  {
-    name: "Frat Party Friday",
-    url: "https://open.spotify.com/playlist/2A2VE7ykrelPEiVJOqcXr5?si=53d0407957bd4f41",
-  },
-  {
-    name: "For the OGs",
-    url: "https://open.spotify.com/playlist/3Ek6dSSZesqj4aEmjko19f?si=290d6c641bcd43fd",
-  },
-  {
-    name: "Big Boy Bailey (NOLA '23)",
-    url: "https://open.spotify.com/playlist/2FTPV9Tx6xi4ySESGXx6iV?si=55bfe90fcb914088"
-  },
-];
-
 const BlogCard = ({ post }) => {
   const [expanded, setExpanded] = useState(false);
 
@@ -57,33 +42,35 @@ const BlogCard = ({ post }) => {
       onHoverStart={() => setExpanded(true)}
       onHoverEnd={() => setExpanded(false)}
       transition={{ type: "spring", stiffness: 100 }}
-      className="bg-black bg-opacity-50 border border-neon-pink rounded-2xl p-5 w-full max-w-sm text-white shadow-2xl hover:shadow-pink-500/50 hover:cursor-pointer"
+      className="relative p-[2px] w-full sm:max-w-full md:max-w-sm rounded-2xl bg-gradient-to-r from-fuchsia-500 via-purple-500 to-cyan-400 hover:shadow-pink-500/50"
     >
-      <div className="text-4xl mb-2">{post.emoji}</div>
-      <h2 className="text-xl font-bold mb-1 neon-text-gradient">{post.title}</h2>
-      <div className="flex flex-wrap gap-2 mb-2">
-        {post.tags.map((tag, idx) => (
-          <span
-            key={idx}
-            className="bg-pink-600/30 text-pink-200 text-xs px-2 py-1 rounded-full"
-          >
-            #{tag}
-          </span>
-        ))}
+      <div className="bg-black bg-opacity-50 rounded-[14px] p-5 text-white shadow-2xl hover:cursor-pointer">
+        <div className="text-4xl mb-2">{post.emoji}</div>
+        <h2 className="text-xl font-bold mb-1 neon-text-gradient">{post.title}</h2>
+        <div className="flex flex-wrap gap-2 mb-2">
+          {post.tags.map((tag, idx) => (
+            <span
+              key={idx}
+              className="bg-pink-600/30 text-pink-200 text-xs px-2 py-1 rounded-full"
+            >
+              #{tag}
+            </span>
+          ))}
+        </div>
+        <p className="text-sm opacity-80 italic">{post.snippet}</p>
+        <AnimatePresence>
+          {expanded && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="mt-2 text-xs text-gray-300"
+            >
+              {post.full}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-      <p className="text-sm opacity-80 italic">{post.snippet}</p>
-      <AnimatePresence>
-        {expanded && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="mt-2 text-xs text-gray-300"
-          >
-            {post.full}
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.div>
   );
 };
@@ -91,25 +78,50 @@ const BlogCard = ({ post }) => {
 export default function Blog() {
   const [randomPost, setRandomPost] = useState(null);
   const [header] = useState("Midnight Thoughts");
-  const [playlistIndex, setPlaylistIndex] = useState(0);
-
-  const surpriseMe = () => {
-    const pick = fakePosts[Math.floor(Math.random() * fakePosts.length)];
-    setRandomPost(pick);
-  };
-
-  const changePlaylist = (direction) => {
-    setPlaylistIndex((prev) => {
-      const total = spotifyPlaylists.length;
-      return (prev + direction + total) % total;
-    });
-  };
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-tr from-[#1a1a1a] via-[#0f0f0f] to-black min-h-screen py-16 px-6">
-      <SparklesCore className="absolute inset-0 -z-10 opacity-40" />
+    <div className="relative overflow-hidden min-h-screen py-16 px-6 bg-gradient-to-b from-[#1a102a] to-black">
+      <style>{`
+        @keyframes midnightPulse {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        @keyframes moonFloat {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-8px) rotate(1deg); }
+        }
+      `}</style>
 
-      {/* Floating Return Button */}
+      {/* Unified Background Stacking Context */}
+      <div className="absolute inset-0 z-0 pointer-events-none" style={{ isolation: "isolate" }}>
+        {/* Starfield */}
+        <div
+          className="absolute inset-0 z-0 opacity-30"
+          style={{
+            backgroundImage:
+              'radial-gradient(#ffffff 1.2px, transparent 1.3px), radial-gradient(#ffffff 1.2px, transparent 1.3px)',
+            backgroundSize: '60px 60px',
+            backgroundPosition: '0 0, 30px 30px',
+          }}
+        />
+
+        {/* Animated Gradient */}
+        <div
+          className="absolute inset-0 z-10 opacity-30 bg-[length:400%_400%] animate-[midnightPulse_30s_ease-in-out_infinite]"
+          style={{
+            backgroundImage:
+              'linear-gradient(135deg, #2b1b38, #1e1d35, #151926, #0d0f1c)',
+          }}
+        />
+
+        {/* Sparkles Layer */}
+        <SparklesCore className="absolute inset-0 z-20 opacity-40" />
+      </div>
+
+      {/* Floating Moon */}
+      <div className="absolute top-10 left-10 w-16 h-16 bg-gradient-to-br from-gray-300 to-white rounded-full shadow-lg z-30 animate-[moonFloat_10s_ease-in-out_infinite] opacity-70" />
+
+      {/* Return Button */}
       <Link
         to="/"
         className="fixed bottom-6 left-6 z-50 px-4 py-2 text-sm font-semibold text-white bg-black/50 backdrop-blur border border-white/20 rounded-full shadow-lg hover:bg-pink-500/80 transition"
@@ -118,14 +130,17 @@ export default function Blog() {
       </Link>
 
       <div className="text-center mb-12">
-        <motion.h1
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 to-cyan-400 cursor-default"
-        >
-          {header}
-        </motion.h1>
+        <div className="relative inline-block">
+          <div className="absolute inset-0 bg-fuchsia-500/30 rounded-full blur-3xl z-[-1]" />
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 to-cyan-400 cursor-default"
+          >
+            {header}
+          </motion.h1>
+        </div>
         <p className="mt-2 text-pink-200 italic">a chaotic archive of thoughts, builds & experiments</p>
       </div>
 
@@ -137,7 +152,10 @@ export default function Blog() {
 
       <div className="flex flex-col items-center space-y-4">
         <button
-          onClick={surpriseMe}
+          onClick={() => {
+            const pick = fakePosts[Math.floor(Math.random() * fakePosts.length)];
+            setRandomPost(pick);
+          }}
           className="px-6 py-3 text-sm font-semibold rounded-full shadow-md bg-white text-black hover:text-transparent hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-cyan-400 hover:bg-clip-text transition-all duration-300"
         >
           🎲 Surprise Me
@@ -156,7 +174,7 @@ export default function Blog() {
       </div>
 
       {/* Sticky Sidebar */}
-      <div className="fixed top-24 right-4 w-52 bg-black/60 border border-pink-500 p-4 rounded-xl shadow-lg text-white text-sm backdrop-blur hidden md:block">
+      <div className="md:fixed md:top-24 md:right-4 w-full md:w-52 mt-12 md:mt-0 bg-black/60 border border-pink-500 p-4 rounded-xl shadow-lg text-white text-sm backdrop-blur">
         <div className="mb-4 flex justify-center">
           <img src={shyguyryicon} alt="ShyGuyRy" className="w-12 h-12 rounded-full shadow-sm" />
         </div>
