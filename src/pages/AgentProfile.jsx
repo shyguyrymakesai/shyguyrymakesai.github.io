@@ -2,6 +2,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { agents } from "../data/agents";
+import Navbar from "../components/Navbar";
 
 export default function AgentProfile() {
   const { agentId } = useParams();
@@ -22,20 +23,23 @@ export default function AgentProfile() {
 
   return (
     <main className="min-h-screen font-sans bg-white">
-      {/* Hero Banner */}
+      <Navbar />
+
+      {/* Responsive Hero Banner */}
       {agent.banner && (
         <section className="relative w-full bg-white overflow-hidden">
-          <div className="w-full max-h-[420px] sm:max-h-[500px] md:max-h-[580px] lg:max-h-[640px] overflow-hidden">
+          <div className="w-full max-h-[420px] sm:max-h-[480px] md:max-h-[520px] overflow-hidden">
             <img
               src={agent.banner}
               alt={`${agent.name} banner`}
-              className="w-full h-full object-cover object-top"
+              className="w-full h-full object-fill sm:object-cover object-center"
+              style={{ objectPosition: 'center top' }}
             />
           </div>
         </section>
       )}
 
-      {/* Details Section */}
+      {/* Agent Details Section */}
       <section className="max-w-3xl mx-auto px-6 py-12 text-center">
         <h1 className={`text-4xl font-bold mb-2 ${agent.themeColor?.text || "text-gray-800"}`}>
           Meet {agent.name}
