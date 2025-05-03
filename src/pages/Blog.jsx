@@ -1,8 +1,10 @@
 // src/pages/Blog.jsx
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import { SparklesCore } from "../components/SparklesCore";
 import { Button } from "../components/Button";
+import shyguyryicon from "../assets/shyguyry_futuristic_icon.png";
 
 const fakePosts = [
   {
@@ -107,6 +109,14 @@ export default function Blog() {
     <div className="relative overflow-hidden bg-gradient-to-tr from-[#1a1a1a] via-[#0f0f0f] to-black min-h-screen py-16 px-6">
       <SparklesCore className="absolute inset-0 -z-10 opacity-40" />
 
+      {/* Floating Return Button */}
+      <Link
+        to="/"
+        className="fixed bottom-6 left-6 z-50 px-4 py-2 text-sm font-semibold text-white bg-black/50 backdrop-blur border border-white/20 rounded-full shadow-lg hover:bg-pink-500/80 transition"
+      >
+        ← Back to Main
+      </Link>
+
       <div className="text-center mb-12">
         <motion.h1
           initial={{ opacity: 0, scale: 0.8 }}
@@ -147,42 +157,12 @@ export default function Blog() {
 
       {/* Sticky Sidebar */}
       <div className="fixed top-24 right-4 w-52 bg-black/60 border border-pink-500 p-4 rounded-xl shadow-lg text-white text-sm backdrop-blur hidden md:block">
+        <div className="mb-4 flex justify-center">
+          <img src={shyguyryicon} alt="ShyGuyRy" className="w-12 h-12 rounded-full shadow-sm" />
+        </div>
         <div className="mb-4">
-          <strong>📡 Now Listening</strong>
-          <div className="mt-2">
-            <AnimatePresence mode="wait">
-              <motion.iframe
-                key={spotifyPlaylists[playlistIndex].url}
-                src={spotifyPlaylists[playlistIndex].url + "?utm_source=generator"}
-                width="100%"
-                height="152"
-                frameBorder="0"
-                allowFullScreen=""
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-                className="rounded-lg"
-                initial={{ opacity: 0, filter: "blur(8px) grayscale(1)" }}
-                animate={{ opacity: 1, filter: "blur(0px) grayscale(0)" }}
-                exit={{ opacity: 0, filter: "blur(8px) grayscale(1)" }}
-                transition={{ duration: 0.5 }}
-              ></motion.iframe>
-            </AnimatePresence>
-            <div className="flex justify-between mt-2 text-xs text-pink-300">
-              <button
-                onClick={() => changePlaylist(-1)}
-                className="hover:text-pink-100"
-              >
-                ◀️ Prev
-              </button>
-              <span className="text-white">{spotifyPlaylists[playlistIndex].name}</span>
-              <button
-                onClick={() => changePlaylist(1)}
-                className="hover:text-pink-100"
-              >
-                Next ▶️
-              </button>
-            </div>
-          </div>
+          <strong>📡 Live Spotify Recs</strong>
+          <p className="mt-1 italic text-pink-300">COMING SOON</p>
         </div>
         <div className="mb-3">
           <strong>✍️ Mood</strong>

@@ -31,8 +31,7 @@ export default function Navbar() {
               Contact
             </Link>
           </li>
-        </ul>
-        <li>
+                  <li>
   <Link
     to="/blog"
     className={`hover:text-blue-600 transition ${
@@ -42,6 +41,7 @@ export default function Navbar() {
     Blog
   </Link>
 </li>
+        </ul>
 
       </nav>
     </header>
