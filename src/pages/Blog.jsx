@@ -5,83 +5,58 @@ import { Link } from "react-router-dom";
 import { SparklesCore } from "../components/SparklesCore";
 import { Button } from "../components/Button";
 import shyguyryicon from "../assets/shyguyry_futuristic_icon.png";
-
-const fakePosts = [
-  {
-    id: 1,
-    title: "Code Confessions #1",
-    emoji: "💻",
-    snippet: "That time I forgot a semicolon and summoned the void...",
-    full: "In this post I walk through the most cursed debugging session of my life. Includes tears, caffeine, and demons.",
-    tags: ["Dev Log", "Funny"],
-  },
-  {
-    id: 2,
-    title: "Build Log: Ava Learns Sass",
-    emoji: "🤖",
-    snippet: "I gave my AI assistant a makeover. She has opinions now.",
-    full: "Ava got tired of grayscale. I taught her Sass and gave her the confidence to glow in gradients. Here’s how I styled her new skin.",
-    tags: ["Build", "AI", "Style"],
-  },
-  {
-    id: 3,
-    title: "Notes from the Deep Work Realm",
-    emoji: "🧘‍♂️",
-    snippet: "Thoughts after a caffeine-fueled 4-hour focus sprint.",
-    full: "Ever entered a trance coding state and emerged feeling like you time-traveled? Yeah, me too. Here's what I learned inside the void.",
-    tags: ["Focus", "Philosophy"],
-  },
-];
+import { fakePosts } from "../data/posts";
+import ReactMarkdown from "react-markdown";
 
 const BlogCard = ({ post }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <motion.div
-      whileHover={{ scale: 1.03 }}
-      onHoverStart={() => setExpanded(true)}
-      onHoverEnd={() => setExpanded(false)}
-      transition={{ type: "spring", stiffness: 100 }}
-      className="relative w-full max-w-[90vw] sm:max-w-[80vw] md:max-w-sm rounded-2xl bg-gradient-to-r from-fuchsia-500 via-purple-500 to-cyan-400 hover:shadow-pink-500/50 p-[2px] flex flex-col h-full"
-    >
-      <div className="h-full w-full bg-black bg-opacity-50 rounded-[inherit] p-5 text-white shadow-2xl hover:cursor-pointer">
-        <div className="text-4xl mb-2">{post.emoji}</div>
-        <h2 className="text-xl font-bold mb-1 neon-text-gradient">{post.title}</h2>
-        <div className="flex flex-wrap gap-2 mb-2">
-          {post.tags.map((tag, idx) => (
-            <span
-              key={idx}
-              className="bg-pink-600/30 text-pink-200 text-xs px-2 py-1 rounded-full"
-            >
-              #{tag}
-            </span>
-          ))}
+    <Link to={`/blog/${post.id}`} className="w-full max-w-[90vw] sm:max-w-[80vw] md:max-w-sm">
+      <motion.div
+        whileHover={{ scale: 1.03 }}
+        onHoverStart={() => setExpanded(true)}
+        onHoverEnd={() => setExpanded(false)}
+        transition={{ type: "spring", stiffness: 100 }}
+        className="relative w-full rounded-2xl bg-gradient-to-r from-fuchsia-500 via-purple-500 to-cyan-400 hover:shadow-pink-500/50 p-[2px] flex flex-col h-full"
+      >
+        <div className="h-full w-full bg-black bg-opacity-50 rounded-[inherit] p-5 text-white shadow-2xl hover:cursor-pointer">
+          <div className="text-4xl mb-2">{post.emoji}</div>
+          <h2 className="text-xl font-bold mb-1 neon-text-gradient">{post.title}</h2>
+          <div className="flex flex-wrap gap-2 mb-2">
+            {post.tags.map((tag, idx) => (
+              <span
+                key={idx}
+                className="bg-pink-600/30 text-pink-200 text-xs px-2 py-1 rounded-full"
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
+          <p className="text-sm opacity-80 italic min-h-[3.5rem]">
+            {post.snippet}
+          </p>
+          <AnimatePresence>
+            {expanded && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="mt-2 text-xs text-gray-300 overflow-hidden line-clamp-2 prose prose-invert prose-p:m-0 prose-p:leading-snug"
+              >
+                <ReactMarkdown>{post.full}</ReactMarkdown>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-        <p className="text-sm opacity-80 italic min-h-[3.5rem]">
-          {post.snippet}
-        </p>
-        <AnimatePresence>
-          {expanded && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="mt-2 text-xs text-gray-300"
-            >
-              {post.full}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </motion.div>
+      </motion.div>
+    </Link>
   );
 };
 
-
-
 export default function Blog() {
   const [randomPost, setRandomPost] = useState(null);
-  const [header] = useState("Midnight Thoughts");
+  const [header] = useState("Ryan's River of Reflection");
 
   return (
     <div className="relative overflow-hidden min-h-screen py-16 px-6 bg-gradient-to-b from-[#1a102a] to-black">
@@ -96,9 +71,7 @@ export default function Blog() {
         }
       `}</style>
 
-      {/* Unified Background Stacking Context */}
       <div className="absolute inset-0 z-0 pointer-events-none" style={{ isolation: "isolate" }}>
-        {/* Starfield */}
         <div
           className="absolute inset-0 z-0 opacity-30"
           style={{
@@ -108,8 +81,6 @@ export default function Blog() {
             backgroundPosition: '0 0, 30px 30px',
           }}
         />
-
-        {/* Animated Gradient */}
         <div
           className="absolute inset-0 z-10 opacity-30 bg-[length:400%_400%] animate-[midnightPulse_30s_ease-in-out_infinite]"
           style={{
@@ -117,15 +88,11 @@ export default function Blog() {
               'linear-gradient(135deg, #2b1b38, #1e1d35, #151926, #0d0f1c)',
           }}
         />
-
-        {/* Sparkles Layer */}
         <SparklesCore className="absolute inset-0 z-20 opacity-40" />
       </div>
 
-      {/* Floating Moon */}
       <div className="absolute top-10 left-10 w-16 h-16 bg-gradient-to-br from-gray-300 to-white rounded-full shadow-lg z-30 animate-[moonFloat_10s_ease-in-out_infinite] opacity-70" />
 
-      {/* Return Button */}
       <Link
         to="/"
         className="fixed bottom-6 left-6 z-50 px-4 py-2 text-sm font-semibold text-white bg-black/50 backdrop-blur border border-white/20 rounded-full shadow-lg hover:bg-pink-500/80 transition"
@@ -148,7 +115,7 @@ export default function Blog() {
         <p className="mt-2 text-pink-200 italic">a chaotic archive of thoughts, builds & experiments</p>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-8 mb-12 pr-64">
+<div className="flex flex-wrap justify-center gap-8 mb-12 px-4 sm:px-6 md:pr-[20rem] md:pl-8 lg:pl-12 xl:pl-24">
         {fakePosts.map((post) => (
           <BlogCard key={post.id} post={post} />
         ))}
@@ -177,20 +144,27 @@ export default function Blog() {
         )}
       </div>
 
-      {/* Sticky Sidebar */}
-      <div className="md:fixed md:top-24 md:right-4 w-full md:w-52 mt-12 md:mt-0 bg-black/60 border border-pink-500 p-4 rounded-xl shadow-lg text-white text-sm backdrop-blur">
+      <div className="w-full md:w-52 mt-12 md:mt-0 md:fixed md:top-24 md:right-4 bg-black/60 border border-pink-500 p-4 rounded-xl shadow-lg text-white text-sm backdrop-blur">
         <div className="mb-4 flex justify-center">
           <img src={shyguyryicon} alt="ShyGuyRy" className="w-12 h-12 rounded-full shadow-sm" />
         </div>
-        <div className="mb-4">
-          <strong>📡 Live Spotify Recs</strong>
-          <p className="mt-1 italic text-pink-300">COMING SOON</p>
+        <div className="mb-4 overflow-y-auto max-h-60 pr-1 space-y-3">
+          <strong className="block text-center">📡 Live Spotify Recs</strong>
+          <a href="https://open.spotify.com/playlist/2A2VE7ykrelPEiVJOqcXr5?si=a8633f6e0eab474d" target="_blank" rel="noopener noreferrer" className="block bg-gradient-to-r from-purple-700 to-pink-600 px-3 py-2 rounded-lg shadow hover:scale-[1.02] transition">
+            🎶 Saturdays at Sansom
+          </a>
+          <a href="https://open.spotify.com/playlist/2FTPV9Tx6xi4ySESGXx6iV?si=6344c89e78aa42ca" target="_blank" rel="noopener noreferrer" className="block bg-gradient-to-r from-green-600 to-teal-500 px-3 py-2 rounded-lg shadow hover:scale-[1.02] transition">
+            🌴 NOLA '23
+          </a>
+          <a href="https://open.spotify.com/playlist/3Ek6dSSZesqj4aEmjko19f?si=7b95e5cec0104333" target="_blank" rel="noopener noreferrer" className="block bg-gradient-to-r from-yellow-500 to-rose-400 px-3 py-2 rounded-lg shadow hover:scale-[1.02] transition">
+            🎧 For the OG's
+          </a>
         </div>
-        <div className="mb-3">
+        <div className="mt-4">
           <strong>✍️ Mood</strong>
           <p>Curious. caffeinated. slightly unhinged.</p>
         </div>
-        <div>
+        <div className="mt-3">
           <strong>💬 Ask Ava</strong>
           <p className="italic">(coming soon)</p>
         </div>

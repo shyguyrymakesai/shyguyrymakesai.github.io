@@ -10,7 +10,7 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen font-sans scroll-smooth">
-      <Navbar/>
+      <Navbar />
 
       <div className="pt-24">
         {/* Hero Section */}
@@ -46,7 +46,7 @@ export default function HomePage() {
                 Built with LangChain for tool routing, FastAPI for backend logic, and deployed via Docker for real-world testing.
               </p>
               <ul className="flex flex-wrap gap-3 text-sm text-gray-600 mb-6">
-                {["LangChain", "FastAPI", "Tool Routing", "Memory", "Docker"].map((tag) => (
+                {['LangChain', 'FastAPI', 'Tool Routing', 'Memory', 'Docker'].map((tag) => (
                   <li
                     key={tag}
                     className="bg-white px-3 py-1 rounded-full shadow-sm border hover:bg-blue-50 hover:text-blue-700 transition"
@@ -55,16 +55,10 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="https://github.com/shyguyrymakesai/whatsapp-agent"
-                className="inline-block px-6 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-md transition"
-              >
-                View Code on GitHub
-              </a>
               <div className="mt-6 text-center md:text-left">
                 <Link
                   to="/agents"
-                  className="inline-block px-5 py-2 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 hover:text-blue-800 transition"
+                  className="inline-block px-8 py-3 text-lg font-semibold border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 hover:text-blue-800 transition"
                 >
                   Explore My Live Agents →
                 </Link>
@@ -156,7 +150,7 @@ export default function HomePage() {
           </div>
           <p>📧 ryan.martinez2@protonmail.com</p>
           <p>
-            🔗 GitHub:{" "}
+            🔗 GitHub: {" "}
             <a
               href="https://github.com/shyguyrymakesai"
               className="text-blue-600 hover:underline"
