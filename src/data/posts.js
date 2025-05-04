@@ -52,23 +52,28 @@ We have created a second spark
     `,
     tags: ["Poetry", "Philosophy", "Future"],
   },
+  {
+  id: 2,
+  title: "Welcome to the Future",
+  emoji: "🧠",
+  snippet: "Follow me into the matrix as I build the future.",
+  full: `
+Hey everyone — thanks for stopping by my new blog and website! I appreciate you checking it out and being interested in what I’m up to.  
 
-  {
-    id: 2,
-    title: "Summoning the Void🌀 **Fake Post**",
-    emoji: "🤖",
-    snippet: "That time I forgot a semicolon and summoned the void...",
-    full: "In this post I walk through the most cursed debugging session of my life. Includes tears, caffeine, and demons.",
-    tags: ["Build", "AI", "Style"],
-  },
-  {
-    id: 3,
-    title: "Notes from the Deep Work Realm **Fake Post**",
-    emoji: "🧘‍♂️",
-    snippet: "Thoughts after a caffeine-fueled 4-hour focus sprint.",
-    full: "Ever entered a trance coding state and emerged feeling like you time-traveled? Yeah, me too. Here's what I learned inside the void.",
-    tags: ["Focus", "Philosophy"],
-  },
+If you haven’t seen the main site yet, click back to Home (bottom left) and give it a look!  
+
+This post will typically serve as a place where I share my development progress, technical logs, and behind-the-scenes updates.  
+
+I'll be showing how I’m currently using AI in my workflow and how you might incorporate it into yours.  
+
+I haven’t finished writing the full dev log just yet, but I didn’t want to include any “dummy” blogs for launch — only real ones.  
+
+So check back soon — I’ll be updating this with an in-depth walkthrough of how I created this site and my WhatsApp-integrated AI assistant.
+  `,
+  tags: ["AI", "DevLog", "Code"]
+}
+
+
 
 
 ];

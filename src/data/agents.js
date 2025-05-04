@@ -31,7 +31,7 @@ themeGradient: "from-yellow-100 to-yellow-600",
   },
   {
     id: "ava",
-    name: "Ava",
+    name: "Ava (Coming Soon)",
     title: "The Inbox Whisperer",
     description:
       "Ava triages emails, drafts replies, and manages scheduling so you can focus on what matters. Designed for busy professionals who want their inbox to work for them.",
@@ -54,7 +54,7 @@ themeGradient: "from-yellow-100 to-yellow-600",
   },
   {
     id: "kai",
-    name: "Kai",
+    name: "Kai (Coming Soon)",
     title: "The Pull Request Partner",
     description:
       "Kai is your quiet partner in every code review. He leaves clean, helpful feedback and identifies bugs, style issues, and optimization opportunities.",
