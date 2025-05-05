@@ -129,11 +129,11 @@ export default function ContactPage() {
             <Linkedin className="text-green-800" size={20} />
             <span className="font-bold text-green-900">LinkedIn:</span>
             <a
-              href="https://linkedin.com/in/ryan-martinez"
+              href="https://linkedin.com/in/ryan-martinez13"
               className="text-green-800 hover:underline"
               target="_blank" rel="noopener noreferrer"
             >
-              ryan-martinez
+              ryan-martinez13
             </a>
           </div>
         </div>
