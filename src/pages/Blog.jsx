@@ -1,7 +1,7 @@
 // src/pages/Blog.jsx
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SparklesCore } from "../components/SparklesCore";
 import { Button } from "../components/Button";
 import Rocket from "../components/Rocket";
@@ -57,6 +57,7 @@ const BlogCard = ({ post }) => {
 
 export default function Blog() {
   const [randomPost, setRandomPost] = useState(null);
+  const navigate = useNavigate();
   const [header] = useState("Ryan's River of Reflection");
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -161,6 +162,7 @@ export default function Blog() {
           onClick={() => {
             const pick = fakePosts[Math.floor(Math.random() * fakePosts.length)];
             setRandomPost(pick);
+            navigate(`/blog/${pick.id}`);
           }}
           className="px-6 py-3 text-sm font-semibold rounded-full shadow-md bg-white text-black hover:text-transparent hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-cyan-400 hover:bg-clip-text transition-all duration-300"
         >
