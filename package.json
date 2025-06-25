@@ -20,6 +20,7 @@
   "dependencies": {
     "@mdx-js/react": "^3.0.1",
     "@prisma/client": "^6.10.1",
+    "buffer": "^6.0.3",
     "esbuild": "^0.17.19",
     "express": "^5.1.0",
     "framer-motion": "^12.9.4",

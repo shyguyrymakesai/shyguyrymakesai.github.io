@@ -1,4 +1,6 @@
 import matter from 'gray-matter';
+import { Buffer } from 'buffer';
+window.Buffer = Buffer;
 
 const files = import.meta.glob('../posts/*.md', {
   query: '?raw',
