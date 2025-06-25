@@ -2,12 +2,13 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { SparklesCore } from "../components/SparklesCore";
-import { fakePosts } from "../data/posts";
+import { posts } from "../data/blog";
 import ReactMarkdown from "react-markdown";
+import CommentBox from "../components/CommentBox";
 
 export default function BlogEntryPage() {
   const { id } = useParams();
-  const post = fakePosts.find((p) => p.id.toString() === id);
+  const post = posts.find((p) => p.slug === id);
 
   if (!post) {
     return (
@@ -18,7 +19,7 @@ export default function BlogEntryPage() {
   }
 
   return (
-    <div className="relative min-h-screen px-6 py-16 bg-gradient-to-b from-[#1a102a] to-black text-white overflow-hidden">
+    <div className="relative min-h-screen px-6 py-16 bg-gradient-to-b from-[#1a102a] to-black dark:from-gray-800 dark:to-gray-900 text-white overflow-hidden">
       <SparklesCore className="absolute inset-0 -z-10 opacity-40" />
 
       <Link
@@ -50,6 +51,8 @@ export default function BlogEntryPage() {
         >
           <ReactMarkdown>{post.full}</ReactMarkdown>
         </motion.div>
+
+        <CommentBox postId={post.id} />
       </div>
     </div>
   );
