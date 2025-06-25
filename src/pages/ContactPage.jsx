@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Mail, Github, Linkedin } from "lucide-react";
 import { toast, Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import shyguyryicon from "../assets/shyguyry_icon.png";
 import Navbar from "../components/Navbar";
+import { SparklesCore } from "../components/SparklesCore";
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -40,22 +42,39 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen font-sans bg-emerald-50 scroll-smooth">
-        <Navbar/>
+    <main className="relative min-h-screen font-sans bg-gradient-to-b from-emerald-100 to-emerald-200 overflow-hidden">
+      <Navbar />
+      <SparklesCore className="absolute inset-0 -z-10 opacity-40" />
       <Toaster position="top-center" reverseOrder={false} />
 
-
       {/* Hero Banner */}
-      <section className="bg-gradient-to-r from-emerald-100 to-emerald-200 pt-32 pb-20 px-6 text-center">
-        <h1 className="text-5xl font-bold text-emerald-900 mb-4">Let’s Connect</h1>
-        <p className="text-lg text-emerald-800 max-w-xl mx-auto">
+      <section className="pt-32 pb-16 px-6 text-center">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-5xl font-bold text-emerald-900 mb-4"
+        >
+          Let’s Connect
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-lg text-emerald-800 max-w-xl mx-auto"
+        >
           Have a project, question, or idea? Drop me a note below and I’ll get back to you.
-        </p>
+        </motion.p>
       </section>
 
-      {/* Form Section */}
-      <section className="py-16 px-6 flex justify-center">
-        <div className="w-full max-w-2xl bg-white/70 backdrop-blur-md border border-emerald-200 rounded-xl shadow-xl p-8">
+      {/* Form + Info */}
+      <section className="relative z-10 flex flex-col md:flex-row items-start justify-center gap-10 px-6 pb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="w-full max-w-md bg-white/70 backdrop-blur-md border border-emerald-200 rounded-xl shadow-xl p-8"
+        >
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <input
@@ -102,12 +121,14 @@ export default function ContactPage() {
               Send Message
             </button>
           </form>
-        </div>
-      </section>
+        </motion.div>
 
-      {/* Contact Info Card */}
-      <section className="mt-16 flex justify-center">
-        <div className="bg-white shadow-md border border-green-100 rounded-2xl p-6 max-w-lg w-full text-left space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="w-full max-w-md bg-white/70 backdrop-blur-md border border-emerald-200 rounded-xl shadow-xl p-8 space-y-4"
+        >
           <h2 className="text-2xl font-bold text-green-900 text-center">Prefer direct contact?</h2>
           <div className="flex items-center gap-3 text-gray-700">
             <Mail className="text-green-800" size={20} />
@@ -136,8 +157,15 @@ export default function ContactPage() {
               ryan-martinez13
             </a>
           </div>
-        </div>
+        </motion.div>
       </section>
+
+      <Link
+        to="/"
+        className="fixed bottom-6 left-6 z-50 px-4 py-2 text-sm font-semibold text-white bg-emerald-700/70 backdrop-blur rounded-full shadow-lg hover:bg-emerald-700"
+      >
+        ← Back to Home
+      </Link>
     </main>
   );
 }
