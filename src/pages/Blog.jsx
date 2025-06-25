@@ -62,7 +62,7 @@ export default function Blog() {
   const [searchTerm, setSearchTerm] = useState("");
 
   return (
-    <div className="relative overflow-hidden min-h-screen py-16 px-6 bg-gradient-to-b from-[#1a102a] to-black">
+    <div className="relative overflow-hidden min-h-screen py-16 px-6 bg-gradient-to-b from-[#1a102a] to-black dark:from-gray-800 dark:to-gray-900">
       <style>{`
         @keyframes midnightPulse {
           0%, 100% { background-position: 0% 50%; }
@@ -164,7 +164,7 @@ export default function Blog() {
             setRandomPost(pick);
             navigate(`/blog/${pick.id}`);
           }}
-          className="px-6 py-3 text-sm font-semibold rounded-full shadow-md bg-white text-black hover:text-transparent hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-cyan-400 hover:bg-clip-text transition-all duration-300"
+          className="px-6 py-3 text-sm font-semibold rounded-full shadow-md bg-white dark:bg-gray-700 text-black dark:text-white hover:text-transparent hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-cyan-400 hover:bg-clip-text transition-all duration-300"
         >
           🎲 Surprise Me
         </button>
