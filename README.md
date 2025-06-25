@@ -15,6 +15,12 @@ If you are developing a production application, we recommend using TypeScript wi
 
 Use the provided helper scripts for common tasks.
 
+### Dark mode
+
+The navigation bar includes a theme toggle that switches between light and dark themes.
+Your preference is saved in `localStorage` and applied on page load. Users without a saved
+preference will default to their system color scheme.
+
 ### Launch the dev server
 
 For Unix based systems run:
