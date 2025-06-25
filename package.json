@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/generateRss.mjs",
     "build": "vite build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
