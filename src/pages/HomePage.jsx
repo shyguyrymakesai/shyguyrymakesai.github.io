@@ -1,12 +1,25 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useTypewriter, Cursor } from "react-simple-typewriter";
 import heroImage from "../assets/hero.jpg";
 import demoImage from "../assets/Demo_SS.png";
 import shyguyryicon from "../assets/shyguyry_icon.png";
 import Navbar from "../components/Navbar";
+import { SparklesCore } from "../components/SparklesCore";
+import Rocket from "../components/Rocket";
 
 export default function HomePage() {
   const location = useLocation();
+  const [typedText] = useTypewriter({
+    words: [
+      "AI Engineer building agentic LLM systems",
+      "Built a WhatsApp AI assistant solo",
+      "Open to remote roles in AI engineering",
+    ],
+    loop: true,
+    delaySpeed: 2000,
+  });
 
   return (
     <main className="min-h-screen font-sans scroll-smooth">
@@ -14,22 +27,39 @@ export default function HomePage() {
 
       <div className="pt-24">
         {/* Hero Section */}
-        <section className="relative bg-white py-24 px-6 text-center transition-opacity duration-500 ease-in-out">
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative bg-white py-32 px-6 text-center overflow-hidden"
+        >
+          <SparklesCore className="absolute inset-0 -z-10 opacity-30" />
           <img
             src={heroImage}
             alt="Background"
-            className="absolute inset-0 w-full h-full object-contain opacity-35 pointer-events-none"
+            className="absolute inset-0 w-full h-full object-contain opacity-30 pointer-events-none"
           />
-          <div className="relative z-10">
-            <h1 className="text-5xl font-bold mb-4">Ryan Martinez</h1>
-            <p className="text-lg text-gray-600 max-w-xl mx-auto">
-              AI Engineer focused on building agentic LLM systems. I recently built and deployed a WhatsApp-based AI assistant using LangChain, FastAPI, and memory routing — solo.
+          <div className="relative z-10 space-y-4">
+            <h1 className="text-6xl font-extrabold tracking-tight">Ryan Martinez</h1>
+            <p className="text-xl text-gray-700 max-w-xl mx-auto h-8">
+              {typedText}
+              <Cursor cursorColor="#000" />
             </p>
+            <div className="flex justify-center pt-4">
+              <Rocket className="w-12 h-12 animate-bounce" />
+            </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Project Section */}
-        <section id="project" className="bg-gray-100 py-14 px-6 transition-transform duration-500 ease-in-out">
+        <motion.section
+          id="project"
+          className="bg-gray-100 py-14 px-6"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="text-3xl font-bold text-center mb-10">Featured Projects</h2>
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div className="rounded-xl overflow-hidden shadow-lg border bg-white">
@@ -65,20 +95,34 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* About Me Section */}
-        <section id="about" className="bg-white py-20 px-6 text-center transition-all duration-500 ease-in-out">
+        <motion.section
+          id="about"
+          className="bg-white py-20 px-6 text-center"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-4">About Me</h2>
             <p className="text-gray-700 leading-relaxed">
               I'm a developer with a passion for autonomous AI systems. After leaving the University of Pennsylvania to refocus and rebuild, I dedicated myself to building tools that actually work — fast, smart, and solo. I'm actively seeking remote or Indiana-based roles in AI engineering, automation, or backend systems.
             </p>
           </div>
-        </section>
+        </motion.section>
 
         {/* Resume Section */}
-        <section id="resume" className="bg-gray-50 py-20 px-6">
+        <motion.section
+          id="resume"
+          className="bg-gray-50 py-20 px-6"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-8">Resume</h2>
             <div className="space-y-10">
@@ -134,12 +178,16 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Contact Section */}
-        <footer
+        <motion.footer
           id="contact"
-          className="bg-gray-100 py-16 px-6 text-center text-sm text-gray-600 transition-opacity duration-500 ease-in-out"
+          className="bg-gray-100 py-16 px-6 text-center text-sm text-gray-600"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
           <div className="mb-4 flex justify-center">
             <img
@@ -159,7 +207,7 @@ export default function HomePage() {
             </a>
           </p>
           <p className="mt-4">Let’s collaborate — or just say hi.</p>
-        </footer>
+        </motion.footer>
       </div>
     </main>
   );
