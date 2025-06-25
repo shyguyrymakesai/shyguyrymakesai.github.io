@@ -6,6 +6,7 @@ import AgentProfile from "./pages/AgentProfile";
 import ContactPage from "./pages/ContactPage";
 import Blog from "./pages/Blog";
 import BlogEntryPage from "./pages/BlogEntryPage";
+import ProjectPage from "./pages/projects/[slug].tsx";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/blog" element={<Blog/>}/>
         <Route path="/blog/:id" element={<BlogEntryPage/>}/>
+        <Route path="/projects/:slug" element={<ProjectPage />} />
       </Routes>
     </HashRouter>
   );

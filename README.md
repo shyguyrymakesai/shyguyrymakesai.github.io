@@ -45,3 +45,10 @@ For Windows PowerShell run:
 
 These scripts will automatically install dependencies if needed before starting the server or deploying.
 
+## Projects
+
+MDX files in `src/data/projects` define each portfolio item. They export a
+`meta` object with `title`, `summary`, `techStack`, `media`, and optional `demo`
+and `repo` links. Visiting `/#/projects/:slug` renders a page with a gallery and
+syntax-highlighted snippets.
+
