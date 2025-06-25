@@ -6,14 +6,14 @@ import { SparklesCore } from "../components/SparklesCore";
 import { Button } from "../components/Button";
 import Rocket from "../components/Rocket";
 import shyguyryicon from "../assets/shyguyry_futuristic_icon.png";
-import { fakePosts } from "../data/posts";
+import { posts } from "../data/blog";
 import ReactMarkdown from "react-markdown";
 
-const BlogCard = ({ post }) => {
+export const BlogCard = ({ post }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <Link to={`/blog/${post.id}`} className="w-full max-w-[90vw] sm:max-w-[80vw] md:max-w-sm">
+    <Link to={`/blog/${post.slug}`} className="w-full max-w-[90vw] sm:max-w-[80vw] md:max-w-sm">
       <motion.div
         whileHover={{ scale: 1.03 }}
         onHoverStart={() => setExpanded(true)}
@@ -60,6 +60,21 @@ export default function Blog() {
   const navigate = useNavigate();
   const [header] = useState("Ryan's River of Reflection");
   const [searchTerm, setSearchTerm] = useState("");
+  const [page, setPage] = useState(1);
+  const postsPerPage = 10;
+
+  const filteredPosts = posts.filter(
+    (post) =>
+      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.snippet.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.tags.join(" ").toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+  const paginatedPosts = filteredPosts.slice(
+    (page - 1) * postsPerPage,
+    page * postsPerPage
+  );
 
   return (
     <div className="relative overflow-hidden min-h-screen py-16 px-6 bg-gradient-to-b from-[#1a102a] to-black">
@@ -137,32 +152,40 @@ export default function Blog() {
       </div>
 
 <div className="flex flex-wrap justify-center gap-8 mb-12 px-4 sm:px-6 md:pr-[20rem] md:pl-8 lg:pl-12 xl:pl-24">
-        {fakePosts
-          .filter(
-            (post) =>
-              post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-              post.snippet.toLowerCase().includes(searchTerm.toLowerCase()) ||
-              post.tags.join(" ").toLowerCase().includes(searchTerm.toLowerCase())
-          )
-          .map((post) => (
-            <BlogCard key={post.id} post={post} />
-          ))}
-        {fakePosts.filter(
-          (post) =>
-            post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            post.snippet.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            post.tags.join(" ").toLowerCase().includes(searchTerm.toLowerCase())
-        ).length === 0 && (
+        {paginatedPosts.map((post) => (
+          <BlogCard key={post.slug} post={post} />
+        ))}
+        {paginatedPosts.length === 0 && (
           <p className="text-pink-100">No posts found.</p>
         )}
+      </div>
+
+      <div className="flex justify-center space-x-4 mb-8">
+        <button
+          onClick={() => setPage(Math.max(1, page - 1))}
+          disabled={page === 1}
+          className="px-4 py-2 bg-white/20 text-white rounded disabled:opacity-50"
+        >
+          Prev
+        </button>
+        <span className="px-2 text-pink-100">
+          Page {page} of {totalPages || 1}
+        </span>
+        <button
+          onClick={() => setPage(Math.min(totalPages, page + 1))}
+          disabled={page === totalPages || totalPages === 0}
+          className="px-4 py-2 bg-white/20 text-white rounded disabled:opacity-50"
+        >
+          Next
+        </button>
       </div>
 
       <div className="flex flex-col items-center space-y-4">
         <button
           onClick={() => {
-            const pick = fakePosts[Math.floor(Math.random() * fakePosts.length)];
+            const pick = posts[Math.floor(Math.random() * posts.length)];
             setRandomPost(pick);
-            navigate(`/blog/${pick.id}`);
+            navigate(`/blog/${pick.slug}`);
           }}
           className="px-6 py-3 text-sm font-semibold rounded-full shadow-md bg-white text-black hover:text-transparent hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-cyan-400 hover:bg-clip-text transition-all duration-300"
         >

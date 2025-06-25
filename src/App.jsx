@@ -6,6 +6,12 @@ import AgentProfile from "./pages/AgentProfile";
 import ContactPage from "./pages/ContactPage";
 import Blog from "./pages/Blog";
 import BlogEntryPage from "./pages/BlogEntryPage";
+ codex/generate-static-blog-pages
+import TagPage from "./pages/TagPage";
+import CategoryPage from "./pages/CategoryPage";
+=======
+import ProjectPage from "./pages/projects/[slug].tsx";
+        main
 
 export default function App() {
   return (
@@ -16,8 +22,16 @@ export default function App() {
         <Route path="/agents" element={<AgentsPage />} />
         <Route path="/agents/:agentId" element={<AgentProfile />} />
         <Route path="/contact" element={<ContactPage />} />
+ codex/generate-static-blog-pages
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogEntryPage />} />
+        <Route path="/tag/:tag" element={<TagPage />} />
+        <Route path="/category/:category" element={<CategoryPage />} />
+=======
         <Route path="/blog" element={<Blog/>}/>
         <Route path="/blog/:id" element={<BlogEntryPage/>}/>
+        <Route path="/projects/:slug" element={<ProjectPage />} />
+        main
       </Routes>
     </HashRouter>
   );
