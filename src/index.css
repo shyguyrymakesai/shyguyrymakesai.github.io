@@ -11,6 +11,11 @@ body {
 }
 
 html.dark body {
-  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      #0f172a, #1e293b, #334155, #475569);
+  background: radial-gradient(
+      circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      #1f2937,
+      #374151,
+      #4b5563,
+      #6b7280
+  );
 }

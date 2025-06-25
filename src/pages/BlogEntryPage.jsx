@@ -19,7 +19,7 @@ export default function BlogEntryPage() {
   }
 
   return (
-    <div className="relative min-h-screen px-6 py-16 bg-gradient-to-b from-[#1a102a] to-black text-white overflow-hidden">
+    <div className="relative min-h-screen px-6 py-16 bg-gradient-to-b from-[#1a102a] to-black dark:from-gray-800 dark:to-gray-900 text-white overflow-hidden">
       <SparklesCore className="absolute inset-0 -z-10 opacity-40" />
 
       <Link
