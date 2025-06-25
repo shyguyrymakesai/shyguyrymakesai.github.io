@@ -45,7 +45,7 @@ export const BlogCard = ({ post }) => {
                 exit={{ height: 0, opacity: 0 }}
                 className="mt-2 text-xs text-gray-300 overflow-hidden line-clamp-2 prose prose-invert prose-p:m-0 prose-p:leading-snug"
               >
-                <ReactMarkdown>{post.full}</ReactMarkdown>
+                <ReactMarkdown>{post.content}</ReactMarkdown>
               </motion.div>
             )}
           </AnimatePresence>
