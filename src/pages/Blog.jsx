@@ -57,6 +57,7 @@ const BlogCard = ({ post }) => {
 export default function Blog() {
   const [randomPost, setRandomPost] = useState(null);
   const [header] = useState("Ryan's River of Reflection");
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <div className="relative overflow-hidden min-h-screen py-16 px-6 bg-gradient-to-b from-[#1a102a] to-black">
@@ -114,11 +115,35 @@ export default function Blog() {
         </div>
         <p className="mt-2 text-pink-200 italic">a chaotic archive of thoughts, builds & experiments</p>
       </div>
+      <div className="flex justify-center mb-8">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search posts..."
+          className="w-full max-w-md px-4 py-2 rounded-full bg-white/20 border border-white/30 text-white placeholder-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500/50"
+        />
+      </div>
 
 <div className="flex flex-wrap justify-center gap-8 mb-12 px-4 sm:px-6 md:pr-[20rem] md:pl-8 lg:pl-12 xl:pl-24">
-        {fakePosts.map((post) => (
-          <BlogCard key={post.id} post={post} />
-        ))}
+        {fakePosts
+          .filter(
+            (post) =>
+              post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+              post.snippet.toLowerCase().includes(searchTerm.toLowerCase()) ||
+              post.tags.join(" ").toLowerCase().includes(searchTerm.toLowerCase())
+          )
+          .map((post) => (
+            <BlogCard key={post.id} post={post} />
+          ))}
+        {fakePosts.filter(
+          (post) =>
+            post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            post.snippet.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            post.tags.join(" ").toLowerCase().includes(searchTerm.toLowerCase())
+        ).length === 0 && (
+          <p className="text-pink-100">No posts found.</p>
+        )}
       </div>
 
       <div className="flex flex-col items-center space-y-4">
