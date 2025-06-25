@@ -10,3 +10,38 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Quick Start
+
+Use the provided helper scripts for common tasks.
+
+### Launch the dev server
+
+For Unix based systems run:
+
+```bash
+./launch.sh
+```
+
+For Windows PowerShell run:
+
+```powershell
+./launch.ps1
+```
+
+### Deploy to GitHub Pages
+
+For Unix based systems run:
+
+```bash
+./deploy.sh
+```
+
+For Windows PowerShell run:
+
+```powershell
+./deploy.ps1
+```
+
+These scripts will automatically install dependencies if needed before starting the server or deploying.
+
