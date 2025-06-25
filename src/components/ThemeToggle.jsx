@@ -19,7 +19,7 @@ export default function ThemeToggle() {
     <button
       aria-label="Toggle theme"
       onClick={toggle}
-      className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500"
+      className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-indigo-700 dark:hover:bg-indigo-600"
     >
       {resolvedTheme === "dark" ? (
         <Sun className="w-4 h-4 text-yellow-300" />

@@ -187,7 +187,7 @@ export default function Blog() {
             setRandomPost(pick);
             navigate(`/blog/${pick.slug}`);
           }}
-          className="px-6 py-3 text-sm font-semibold rounded-full shadow-md bg-white dark:bg-gray-700 text-black dark:text-white hover:text-transparent hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-cyan-400 hover:bg-clip-text transition-all duration-300"
+          className="px-6 py-3 text-sm font-semibold rounded-full shadow-md bg-white dark:bg-indigo-800 text-black dark:text-white hover:text-transparent hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-cyan-400 hover:bg-clip-text transition-all duration-300"
         >
           🎲 Surprise Me
         </button>

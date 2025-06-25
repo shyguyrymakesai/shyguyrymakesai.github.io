@@ -22,12 +22,12 @@ export default function AgentProfile() {
   }
 
   return (
-    <main className="min-h-screen font-sans bg-white dark:bg-gray-900">
+    <main className="min-h-screen font-sans bg-white dark:bg-indigo-950">
       <Navbar />
 
       {/* Responsive Hero Banner */}
       {agent.banner && (
-        <section className="relative w-full bg-white dark:bg-gray-800 overflow-hidden">
+        <section className="relative w-full bg-white dark:bg-indigo-900 overflow-hidden">
           <div className="w-full max-h-[420px] sm:max-h-[480px] md:max-h-[520px] overflow-hidden">
             <img
               src={agent.banner}
@@ -58,7 +58,7 @@ export default function AgentProfile() {
               {agent.capabilities.map((cap, idx) => (
                 <li
                   key={idx}
-                  className={`bg-white dark:bg-gray-800 ${agent.themeColor?.border || "border-gray-200"} px-4 py-3 rounded-lg shadow-sm hover:shadow-md transition`}
+                  className={`bg-white dark:bg-indigo-900 ${agent.themeColor?.border || "border-gray-200"} px-4 py-3 rounded-lg shadow-sm hover:shadow-md transition`}
                 >
                   ✅ {cap}
                 </li>
