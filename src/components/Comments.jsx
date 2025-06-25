@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+// Use your deployed backend URL
+const API_BASE = "https://shyguyrymakesai-github-io.onrender.com/api/comments";
+
 function Comments() {
   const { id: slug } = useParams();
   const [comments, setComments] = useState([]);
@@ -8,18 +11,21 @@ function Comments() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/comments/${slug}`)
+    fetch(`${API_BASE}/${slug}`)
       .then(res => res.json())
       .then(setComments)
       .catch(() => setComments([]));
   }, [slug]);
 
-  const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setForm(prev => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
-    await fetch(`http://localhost:4000/api/comments/${slug}`,
+    await fetch(`${API_BASE}/${slug}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -28,7 +34,7 @@ function Comments() {
     );
     setForm({ name: "", message: "" });
     setLoading(false);
-    fetch(`http://localhost:4000/api/comments/${slug}`)
+    fetch(`${API_BASE}/${slug}`)
       .then(res => res.json())
       .then(setComments);
   };
@@ -36,14 +42,15 @@ function Comments() {
   return (
     <section className="max-w-xl mx-auto mt-12">
       <h3 className="text-2xl font-bold mb-4">Comments</h3>
-      <form onSubmit={handleSubmit} className="mb-6 space-y-2">
+      <form onSubmit={handleSubmit} className="mb-6 space-y-2" autoComplete="off">
         <input
           name="name"
           value={form.name}
           onChange={handleChange}
           placeholder="Your name"
           required
-          className="border px-3 py-2 rounded w-full"
+          autoComplete="off"
+          className="border px-3 py-2 rounded w-full text-black"
         />
         <textarea
           name="message"
@@ -51,7 +58,8 @@ function Comments() {
           onChange={handleChange}
           placeholder="Your comment"
           required
-          className="border px-3 py-2 rounded w-full"
+          autoComplete="off"
+          className="border px-3 py-2 rounded w-full text-black"
         />
         <button
           type="submit"
