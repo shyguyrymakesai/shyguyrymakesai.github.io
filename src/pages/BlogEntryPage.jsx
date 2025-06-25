@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { SparklesCore } from "../components/SparklesCore";
 import { fakePosts } from "../data/posts";
 import ReactMarkdown from "react-markdown";
+import NewsletterSignup from "../components/NewsletterSignup";
+import { Toaster } from "react-hot-toast";
 
 export default function BlogEntryPage() {
   const { id } = useParams();
@@ -20,6 +22,8 @@ export default function BlogEntryPage() {
   return (
     <div className="relative min-h-screen px-6 py-16 bg-gradient-to-b from-[#1a102a] to-black text-white overflow-hidden">
       <SparklesCore className="absolute inset-0 -z-10 opacity-40" />
+
+      <Toaster position="top-center" reverseOrder={false} />
 
       <Link
         to="/blog"
@@ -50,6 +54,9 @@ export default function BlogEntryPage() {
         >
           <ReactMarkdown>{post.full}</ReactMarkdown>
         </motion.div>
+        <div className="mt-8">
+          <NewsletterSignup />
+        </div>
       </div>
     </div>
   );

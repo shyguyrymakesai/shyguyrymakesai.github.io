@@ -58,3 +58,5 @@ The `/contact` page now provides a multi-step wizard to schedule demos or consul
 Bookings are stored server-side via `pages/api/bookings.ts` and a Google Meet link
 is emailed to the address provided. Environment variables required for calendar
 integration are listed in `env.example`.
+Newsletter signup with Mailjet also requires the `MAILJET_API_KEY`,
+`MAILJET_API_SECRET`, and `MAILJET_LIST_ID` variables in the same file.

@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { SparklesCore } from "../components/SparklesCore";
 import { Button } from "../components/Button";
+import NewsletterSignup from "../components/NewsletterSignup";
+import { Toaster } from "react-hot-toast";
 import Rocket from "../components/Rocket";
 import shyguyryicon from "../assets/shyguyry_futuristic_icon.png";
 import { fakePosts } from "../data/posts";
@@ -104,6 +106,7 @@ export default function Blog() {
       <div className="absolute top-10 left-10 w-16 h-16 bg-gradient-to-br from-gray-300 to-white rounded-full shadow-lg z-30 animate-[moonFloat_10s_ease-in-out_infinite] opacity-70" />
 
       <Rocket className="pointer-events-none absolute w-12 h-12 z-30 animate-[rocketFlight_25s_linear_infinite]" />
+      <Toaster position="top-center" reverseOrder={false} />
 
       <Link
         to="/"
@@ -204,6 +207,10 @@ export default function Blog() {
         <div className="mt-3">
           <strong>💬 Ask Ava</strong>
           <p className="italic">(coming soon)</p>
+        </div>
+        <div className="mt-4">
+          <strong>📬 Newsletter</strong>
+          <NewsletterSignup className="mt-2" />
         </div>
       </div>
     </div>
