@@ -16,6 +16,15 @@ const TOKEN_ID = 1;
 // Scroll Sepolia RPC endpoint (public)
 const SCROLL_SEPOLIA_RPC = "https://sepolia-rpc.scroll.io/";
 
+// Helper to convert ipfs:// to https://ipfs.io/ipfs/
+function ipfsToHttp(url: string) {
+  if (!url) return "";
+  if (url.startsWith("ipfs://")) {
+    return url.replace("ipfs://", "https://ipfs.io/ipfs/");
+  }
+  return url;
+}
+
 export default function GenesisCard() {
   const [meta, setMeta] = useState<any>(null);
   const [owner, setOwner] = useState<string>("...");
@@ -48,9 +57,19 @@ export default function GenesisCard() {
     ? owner.slice(0, 6) + "..." + owner.slice(-4)
     : owner;
 
+  // Always use HTTP gateway for image
+  const imageUrl = ipfsToHttp(meta.image);
+
   return (
     <div className={styles.card}>
-      <img src={meta.image} alt={meta.name} className={styles.cardImage} />
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginBottom: "1rem" }}>
+        <img
+          src={imageUrl}
+          alt={meta.name}
+          className={styles.cardImage}
+          style={{ maxWidth: "300px", borderRadius: "1rem", boxShadow: "0 4px 24px #ffb34755" }}
+        />
+      </div>
       <h3 className={styles.cardTitle}>{meta.name}</h3>
       <p className={styles.cardOwner}>Owner: {shortOwner}</p>
       <p>{meta.description}</p>
@@ -83,3 +102,4 @@ export default function GenesisCard() {
     </div>
   );
 }
+
