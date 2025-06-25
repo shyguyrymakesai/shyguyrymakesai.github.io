@@ -46,6 +46,25 @@ app.post('/api/comments/:slug', async (req, res) => {
   }
 });
 
+// Serve dynamic metadata for tokens
+app.get('/metadata/:id', (req, res) => {
+  const { id } = req.params;
+  // Example: only token #1 for now
+  if (id === '1') {
+    res.json({
+      name: "FlameCoin Genesis #1",
+      description: "The first soulbound FlameCoin, minted by Ryan.",
+      image: "https://yourdomain.com/path/to/image.png", // Update to your actual image URL
+      attributes: [
+        { trait_type: "Generation", value: "Genesis" },
+        { trait_type: "Owner", value: "Ryan" }
+      ]
+    });
+  } else {
+    res.status(404).json({ error: "Metadata not found" });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

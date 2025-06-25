@@ -43,6 +43,11 @@ export default function Navbar() {
                 Blog
               </Link>
             </li>
+            <li>
+              <Link to="/flamecoin" className="hover:text-blue-600 transition">
+                FlameCoin
+              </Link>
+            </li>
           </ul>
           <ThemeToggle />
         </div>
