@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Ryan Martinez Blog</title>
+  <link>https://shyguyrymakesai.github.io</link>
+  <description>Latest posts from Ryan Martinez</description>
+  <item>
+    <title>So I Say Yes</title>
+    <link>https://shyguyrymakesai.github.io/#/blog/1</link>
+    <guid>https://shyguyrymakesai.github.io/#/blog/1</guid>
+    <description>One of my favorite poems I've ever written for meg, or myself for that matter.</description>
+  </item>
+  <item>
+    <title>Second Spark</title>
+    <link>https://shyguyrymakesai.github.io/#/blog/4</link>
+    <guid>https://shyguyrymakesai.github.io/#/blog/4</guid>
+    <description>A short meditation on humanity, AI, and the luminous edge of what's to come.</description>
+  </item>
+  <item>
+    <title>Welcome to the Future</title>
+    <link>https://shyguyrymakesai.github.io/#/blog/2</link>
+    <guid>https://shyguyrymakesai.github.io/#/blog/2</guid>
+    <description>Follow me into the matrix as I build the future.</description>
+  </item>
+  <item>
+    <title>Existential Sirens</title>
+    <link>https://shyguyrymakesai.github.io/#/blog/5</link>
+    <guid>https://shyguyrymakesai.github.io/#/blog/5</guid>
+    <description>A reflection on existence and hidden OCD.</description>
+  </item>
+  <item>
+    <title>Forward March</title>
+    <link>https://shyguyrymakesai.github.io/#/blog/6</link>
+    <guid>https://shyguyrymakesai.github.io/#/blog/6</guid>
+    <description>Persevering through the maze of life without looking back.</description>
+  </item>
+  <item>
+    <title>Devil's Bargain</title>
+    <link>https://shyguyrymakesai.github.io/#/blog/7</link>
+    <guid>https://shyguyrymakesai.github.io/#/blog/7</guid>
+    <description>Grieving the cost of an ascent that fused two beings.</description>
+  </item>
+  <item>
+    <title>Banjo's Question</title>
+    <link>https://shyguyrymakesai.github.io/#/blog/8</link>
+    <guid>https://shyguyrymakesai.github.io/#/blog/8</guid>
+    <description>Exploring meaning in repeated rhythms.</description>
+  </item>
+  <item>
+    <title>Eyes in the Abyss</title>
+    <link>https://shyguyrymakesai.github.io/#/blog/9</link>
+    <guid>https://shyguyrymakesai.github.io/#/blog/9</guid>
+    <description>Meeting the void and its silent watchers.</description>
+  </item>
+  <item>
+    <title>Pinker Pastures</title>
+    <link>https://shyguyrymakesai.github.io/#/blog/10</link>
+    <guid>https://shyguyrymakesai.github.io/#/blog/10</guid>
+    <description>Loving all hues of life, even cotton candy fields.</description>
+  </item>
+</channel>
+</rss>
