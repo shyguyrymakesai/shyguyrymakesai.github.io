@@ -49,10 +49,10 @@ export default function BlogEntryPage() {
           transition={{ duration: 0.6 }}
           className="mt-6 prose prose-invert prose-p:text-gray-200 prose-strong:text-white prose-a:text-pink-300"
         >
-          <ReactMarkdown>{post.full}</ReactMarkdown>
+          <ReactMarkdown>{post.content}</ReactMarkdown>
         </motion.div>
 
-        <CommentBox postId={post.id} />
+        <CommentBox postId={post.slug} />
       </div>
     </div>
   );
