@@ -73,7 +73,7 @@ export default function ContactPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="w-full max-w-md bg-white/70 dark:bg-indigo-900/60 backdrop-blur-md border border-emerald-200 dark:border-indigo-700 rounded-xl shadow-xl p-8"
+          className="w-full max-w-md bg-white/70 dark:bg-carbon-800/60 backdrop-blur-md border border-emerald-200 dark:border-carbon-600 rounded-xl shadow-xl p-8"
         >
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -127,7 +127,7 @@ export default function ContactPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="w-full max-w-md bg-white/70 dark:bg-indigo-900/60 backdrop-blur-md border border-emerald-200 dark:border-indigo-700 rounded-xl shadow-xl p-8 space-y-4"
+          className="w-full max-w-md bg-white/70 dark:bg-carbon-800/60 backdrop-blur-md border border-emerald-200 dark:border-carbon-600 rounded-xl shadow-xl p-8 space-y-4"
         >
           <h2 className="text-2xl font-bold text-green-900 text-center">Prefer direct contact?</h2>
           <div className="flex items-center gap-3 text-gray-700">

@@ -22,7 +22,7 @@ export default function HomePage() {
   });
 
   return (
-    <main className="min-h-screen font-sans scroll-smooth bg-white dark:bg-indigo-950">
+    <main className="min-h-screen font-sans scroll-smooth bg-white dark:bg-carbon-800">
       <Navbar />
 
       <div className="pt-24">
@@ -31,7 +31,7 @@ export default function HomePage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative bg-white dark:bg-indigo-900 py-32 px-6 text-center overflow-hidden"
+          className="relative bg-white dark:bg-carbon-800 py-32 px-6 text-center overflow-hidden"
         >
           <SparklesCore className="absolute inset-0 -z-10 opacity-30" />
           <img
@@ -54,7 +54,7 @@ export default function HomePage() {
         {/* Project Section */}
         <motion.section
           id="project"
-          className="bg-gray-100 dark:bg-indigo-900 py-14 px-6"
+          className="bg-gray-100 dark:bg-carbon-800 py-14 px-6"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -62,7 +62,7 @@ export default function HomePage() {
         >
           <h2 className="text-3xl font-bold text-center mb-10">Featured Projects</h2>
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-              <Link to="/projects/ai-assistant" className="rounded-xl overflow-hidden shadow-lg border bg-white dark:bg-indigo-800 block">
+              <Link to="/projects/ai-assistant" className="rounded-xl overflow-hidden shadow-lg border bg-white dark:bg-carbon-700 block">
               <img
                 src={demoImage}
                 alt="AI Assistant Demo"
@@ -79,7 +79,7 @@ export default function HomePage() {
                 {['LangChain', 'FastAPI', 'Tool Routing', 'Memory', 'Docker'].map((tag) => (
                   <li
                     key={tag}
-                      className="bg-white dark:bg-indigo-800 px-3 py-1 rounded-full shadow-sm border hover:bg-blue-50 dark:hover:bg-indigo-700 hover:text-blue-700 dark:text-indigo-200 dark:hover:text-blue-300 transition"
+                      className="bg-white dark:bg-carbon-700 px-3 py-1 rounded-full shadow-sm border hover:bg-blue-50 dark:hover:bg-carbon-600 hover:text-blue-700 dark:text-carbon-200 dark:hover:text-blue-300 transition"
                   >
                     {tag}
                   </li>
@@ -100,7 +100,7 @@ export default function HomePage() {
         {/* About Me Section */}
         <motion.section
           id="about"
-          className="bg-white dark:bg-indigo-900 py-20 px-6 text-center"
+          className="bg-white dark:bg-carbon-800 py-20 px-6 text-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -117,7 +117,7 @@ export default function HomePage() {
         {/* Resume Section */}
         <motion.section
           id="resume"
-          className="bg-gray-50 dark:bg-indigo-800 py-20 px-6"
+          className="bg-gray-50 dark:bg-carbon-700 py-20 px-6"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -183,7 +183,7 @@ export default function HomePage() {
         {/* Contact Section */}
         <motion.footer
           id="contact"
-          className="bg-gray-100 dark:bg-indigo-900 py-16 px-6 text-center text-sm text-gray-600 dark:text-indigo-300"
+          className="bg-gray-100 dark:bg-carbon-800 py-16 px-6 text-center text-sm text-gray-600 dark:text-black"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

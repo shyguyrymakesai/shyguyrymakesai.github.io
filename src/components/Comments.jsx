@@ -50,7 +50,7 @@ function Comments() {
           placeholder="Your name"
           required
           autoComplete="off"
-          className="border px-3 py-2 rounded w-full text-black"
+          className="border px-3 py-2 rounded w-full text-gray-900 bg-gray-50 dark:text-gray-200 dark:bg-carbon-700"
         />
         <textarea
           name="message"
@@ -59,7 +59,7 @@ function Comments() {
           placeholder="Your comment"
           required
           autoComplete="off"
-          className="border px-3 py-2 rounded w-full text-black"
+          className="border px-3 py-2 rounded w-full text-gray-900 bg-gray-50 dark:text-gray-200 dark:bg-carbon-700"
         />
         <button
           type="submit"
@@ -70,11 +70,11 @@ function Comments() {
         </button>
       </form>
       <div>
-        {comments.length === 0 && <p>No comments yet.</p>}
+        {comments.length === 0 && <p className="text-gray-900 dark:text-gray-200">No comments yet.</p>}
         {comments.map((c, i) => (
           <div key={i} className="mb-4 border-b pb-2">
-            <strong>{c.name}</strong> <span className="text-xs text-gray-500">{new Date(c.date).toLocaleString()}</span>
-            <p>{c.message}</p>
+            <strong className="text-gray-900 dark:text-gray-200">{c.name}</strong> <span className="text-xs text-gray-700 dark:text-gray-300">{new Date(c.date).toLocaleString()}</span>
+            <p className="text-gray-900 dark:text-gray-200">{c.message}</p>
           </div>
         ))}
       </div>
