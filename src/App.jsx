@@ -17,7 +17,7 @@ export default function App() {
         <Route path="/agents/:agentId" element={<AgentProfile />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/blog" element={<Blog/>}/>
-        <Route path="/blog/:id" element={<BlogEntryPage/>}/>
+        <Route path="/blog/:slug" element={<BlogEntryPage/>}/>
       </Routes>
     </HashRouter>
   );

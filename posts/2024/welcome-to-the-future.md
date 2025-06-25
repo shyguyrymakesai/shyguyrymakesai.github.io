@@ -1,0 +1,19 @@
+---
+title: "Welcome to the Future"
+date: 2024-03-01
+tags: ["AI", "DevLog", "Code"]
+categories: ["DevLog"]
+emoji: "🧠"
+snippet: "Follow me into the matrix as I build the future."
+---
+Hey everyone — thanks for stopping by my new blog and website! I appreciate you checking it out and being interested in what I’m up to.
+
+If you haven’t seen the main site yet, click back to Home (bottom left) and give it a look!
+
+This post will typically serve as a place where I share my development progress, technical logs, and behind-the-scenes updates.
+
+I'll be showing how I’m currently using AI in my workflow and how you might incorporate it into yours.
+
+I haven’t finished writing the full dev log just yet, but I didn’t want to include any “dummy” blogs for launch — only real ones.
+
+So check back soon — I’ll be updating this with an in-depth walkthrough of how I created this site and my WhatsApp-integrated AI assistant.

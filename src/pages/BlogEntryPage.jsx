@@ -2,12 +2,12 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { SparklesCore } from "../components/SparklesCore";
-import { fakePosts } from "../data/posts";
+import { posts } from "../data/posts";
 import ReactMarkdown from "react-markdown";
 
 export default function BlogEntryPage() {
-  const { id } = useParams();
-  const post = fakePosts.find((p) => p.id.toString() === id);
+  const { slug } = useParams();
+  const post = posts.find((p) => p.slug === slug);
 
   if (!post) {
     return (

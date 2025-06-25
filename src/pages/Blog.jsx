@@ -6,14 +6,14 @@ import { SparklesCore } from "../components/SparklesCore";
 import { Button } from "../components/Button";
 import Rocket from "../components/Rocket";
 import shyguyryicon from "../assets/shyguyry_futuristic_icon.png";
-import { fakePosts } from "../data/posts";
+import { posts } from "../data/posts";
 import ReactMarkdown from "react-markdown";
 
 const BlogCard = ({ post }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <Link to={`/blog/${post.id}`} className="w-full max-w-[90vw] sm:max-w-[80vw] md:max-w-sm">
+    <Link to={`/blog/${post.slug}`} className="w-full max-w-[90vw] sm:max-w-[80vw] md:max-w-sm">
       <motion.div
         whileHover={{ scale: 1.03 }}
         onHoverStart={() => setExpanded(true)}
@@ -137,7 +137,7 @@ export default function Blog() {
       </div>
 
 <div className="flex flex-wrap justify-center gap-8 mb-12 px-4 sm:px-6 md:pr-[20rem] md:pl-8 lg:pl-12 xl:pl-24">
-        {fakePosts
+        {posts
           .filter(
             (post) =>
               post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -145,9 +145,9 @@ export default function Blog() {
               post.tags.join(" ").toLowerCase().includes(searchTerm.toLowerCase())
           )
           .map((post) => (
-            <BlogCard key={post.id} post={post} />
+            <BlogCard key={post.slug} post={post} />
           ))}
-        {fakePosts.filter(
+        {posts.filter(
           (post) =>
             post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
             post.snippet.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -160,9 +160,9 @@ export default function Blog() {
       <div className="flex flex-col items-center space-y-4">
         <button
           onClick={() => {
-            const pick = fakePosts[Math.floor(Math.random() * fakePosts.length)];
+            const pick = posts[Math.floor(Math.random() * posts.length)];
             setRandomPost(pick);
-            navigate(`/blog/${pick.id}`);
+            navigate(`/blog/${pick.slug}`);
           }}
           className="px-6 py-3 text-sm font-semibold rounded-full shadow-md bg-white text-black hover:text-transparent hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-cyan-400 hover:bg-clip-text transition-all duration-300"
         >
