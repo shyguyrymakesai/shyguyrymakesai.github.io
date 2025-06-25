@@ -3,6 +3,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { agents } from "../data/agents";
 import Navbar from "../components/Navbar";
+import ChatDemo from "../components/ChatDemo";
 
 export default function AgentProfile() {
   const { agentId } = useParams();
@@ -66,6 +67,11 @@ export default function AgentProfile() {
             </ul>
           </>
         )}
+
+        <div className="my-8">
+          <h2 className="text-2xl font-semibold mb-4">Try {agent.name}</h2>
+          <ChatDemo agentId={agent.id} />
+        </div>
 
         <Link
           to="/agents"
