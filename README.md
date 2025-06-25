@@ -15,6 +15,12 @@ If you are developing a production application, we recommend using TypeScript wi
 
 Use the provided helper scripts for common tasks.
 
+### Dark mode
+
+The navigation bar includes a theme toggle that switches between light and dark themes.
+Your preference is saved in `localStorage` and applied on page load. Users without a saved
+preference will default to their system color scheme.
+
 ### Launch the dev server
 
 For Unix based systems run:
@@ -45,6 +51,7 @@ For Windows PowerShell run:
 
 These scripts will automatically install dependencies if needed before starting the server or deploying.
 
+ codex/add-project-detail-page-with-media-and-tech-stack
 ## Projects
 
 MDX files in `src/data/projects` define each portfolio item. They export a
@@ -52,3 +59,12 @@ MDX files in `src/data/projects` define each portfolio item. They export a
 and `repo` links. Visiting `/#/projects/:slug` renders a page with a gallery and
 syntax-highlighted snippets.
 
+=======
+
+## Booking System
+
+The `/contact` page now provides a multi-step wizard to schedule demos or consultations.
+Bookings are stored server-side via `pages/api/bookings.ts` and a Google Meet link
+is emailed to the address provided. Environment variables required for calendar
+integration are listed in `env.example`.
+ main

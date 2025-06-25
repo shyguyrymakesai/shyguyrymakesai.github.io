@@ -9,3 +9,8 @@ body {
   background-attachment: fixed;
   transition: background 0.1s ease-out;
 }
+
+html.dark body {
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      #0f172a, #1e293b, #334155, #475569);
+}
