@@ -12,6 +12,7 @@
   "dependencies": {
     "esbuild": "^0.17.19",
     "framer-motion": "^12.9.4",
+    "gray-matter": "^4.0.3",
     "lucide-react": "^0.507.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
