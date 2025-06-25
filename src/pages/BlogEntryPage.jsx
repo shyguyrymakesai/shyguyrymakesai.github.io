@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { SparklesCore } from "../components/SparklesCore";
 import { posts } from "../data/blog";
 import ReactMarkdown from "react-markdown";
+import CommentBox from "../components/CommentBox";
 
 export default function BlogEntryPage() {
   const { id } = useParams();
@@ -50,6 +51,8 @@ export default function BlogEntryPage() {
         >
           <ReactMarkdown>{post.full}</ReactMarkdown>
         </motion.div>
+
+        <CommentBox postId={post.id} />
       </div>
     </div>
   );
