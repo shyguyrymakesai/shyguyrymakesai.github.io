@@ -58,6 +58,10 @@ MDX files in `src/data/projects` define each portfolio item. They export a
 and `repo` links. Visiting `/#/projects/:slug` renders a page with a gallery and
 syntax-highlighted snippets.
 
+The site now also includes a highlight page for the **FlameCoin** experiment at
+`/flamecoin`. It showcases the genesis soulbound token and links to the
+contract metadata.
+
 
 ## Booking System
 
