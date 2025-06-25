@@ -8,13 +8,13 @@ export default function AgentsPage() {
   const isHome = location.pathname === "/";
 
   return (
-    <main className="min-h-screen font-sans bg-white dark:bg-gray-900 scroll-smooth">
+    <main className="min-h-screen font-sans bg-white dark:bg-indigo-950 scroll-smooth">
             <Navbar />
       
       {/* Top Navigation Bar */}
 
       {/* Hero Banner */}
-      <section className="relative bg-gradient-to-r from-blue-50 to-blue-100 dark:from-gray-700 dark:to-gray-800 pt-32 pb-20 text-center px-6 overflow-hidden">
+      <section className="relative bg-gradient-to-r from-blue-50 to-blue-100 dark:from-indigo-900 dark:to-indigo-950 pt-32 pb-20 text-center px-6 overflow-hidden">
         <div className="absolute inset-0 opacity-10 animate-pulse bg-[url('/grid.svg')] bg-center bg-cover pointer-events-none" />
         <div className="max-w-3xl mx-auto relative z-10">
           <h1 className="text-5xl font-bold mb-4 text-blue-800">Meet the Agents 🤖</h1>
@@ -29,7 +29,7 @@ export default function AgentsPage() {
       {agents.map((agent, index) => (
         <section
           key={agent.id}
-          className={`py-16 px-6 bg-gradient-to-br ${agent.themeGradient} dark:from-gray-800 dark:to-gray-900 scroll-mt-20 animate-fade-in`}
+          className={`py-16 px-6 bg-gradient-to-br ${agent.themeGradient} dark:from-indigo-900 dark:to-indigo-950 scroll-mt-20 animate-fade-in`}
         >
           <div
             className={`max-w-6xl mx-auto flex flex-col ${
@@ -61,7 +61,7 @@ export default function AgentsPage() {
       ))}
 
       {/* CTA Footer */}
-      <section className="bg-gray-100 dark:bg-gray-800 py-12 px-6 text-center relative overflow-hidden">
+      <section className="bg-gray-100 dark:bg-indigo-900 py-12 px-6 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-200 opacity-10 animate-fade-in pointer-events-none" />
         <div className="relative z-10">
           <h3 className="text-xl font-semibold mb-2">Want a custom agent for your business?</h3>
