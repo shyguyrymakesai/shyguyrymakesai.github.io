@@ -74,3 +74,20 @@
   gap: 1rem;
   margin-top: 1rem;
 }
+.homeButton {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #ff5e00;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.homeButton:hover {
+  background: #ff7f32;
+}

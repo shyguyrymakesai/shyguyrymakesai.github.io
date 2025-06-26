@@ -49,6 +49,9 @@ export default function FlameCoinPage() {
         >
           Explore the Code
         </a>
+        <a href="/" className={styles.homeButton} style={{ marginLeft: '1rem' }}>
+          Return Home
+        </a>
       </section>
     </main>
   );

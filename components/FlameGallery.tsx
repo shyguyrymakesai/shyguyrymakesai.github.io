@@ -71,7 +71,12 @@ const FlameGallery: React.FC = () => {
   }
 
   if (!tokens.length) {
-    return <p className={styles.section}>No FlameCoins minted yet.</p>;
+    return (
+      <section className={styles.section}>
+        <p>No FlameCoins minted yet.</p>
+        <a href="/" className={styles.homeButton}>Return Home</a>
+      </section>
+    );
   }
 
   return (
@@ -90,6 +95,7 @@ const FlameGallery: React.FC = () => {
           </div>
         ))}
       </div>
+      <a href="/" className={styles.homeButton}>Return Home</a>
     </section>
   );
 };
