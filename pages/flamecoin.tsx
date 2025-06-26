@@ -1,6 +1,7 @@
 import React from 'react';
 import FlameHero from '../components/FlameHero';
 import GenesisCard from '../components/GenesisCard';
+import FlameGallery from '../components/FlameGallery';
 import styles from '../styles/flamecoin.module.css';
 
 export default function FlameCoinPage() {
@@ -26,6 +27,8 @@ export default function FlameCoinPage() {
         <h2>Genesis Token</h2>
         <GenesisCard />
       </section>
+
+      <FlameGallery />
 
       <section className={styles.section}>
         <h2>Minting Process</h2>
