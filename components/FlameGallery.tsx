@@ -2,6 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import styles from '../styles/flamecoin.module.css';
 
+// Add ImportMetaEnv type declaration for Vite environment variables
+interface ImportMetaEnv {
+  readonly VITE_CONTRACT_ADDRESS?: string;
+  readonly VITE_SCROLL_SEPOLIA_RPC?: string;
+  readonly VITE_ETHERSCAN_API_KEY?: string;
+}
+
+// Extend the ImportMeta interface globally for Vite
+declare global {
+  interface ImportMeta {
+    readonly env: ImportMetaEnv;
+  }
+}
+
 const ABI = [
   'function tokenURI(uint256 tokenId) view returns (string)',
   'event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)'
@@ -50,6 +64,9 @@ const FlameGallery: React.FC = () => {
               try {
                 console.log(`Fetching metadata for token ID ${id}...`);
                 const tokenUri = await contract.tokenURI(id);
+                if (!tokenUri || tokenUri === '0x') {
+                  throw new Error(`Invalid token URI returned by contract for token ID ${id}.`);
+                }
                 console.log(`Token URI for ID ${id}:`, tokenUri);
                 const metadataRes = await fetch(ipfsToHttp(tokenUri));
                 if (!metadataRes.ok) {

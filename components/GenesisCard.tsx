@@ -36,8 +36,14 @@ export default function GenesisCard() {
         const provider = new ethers.JsonRpcProvider(SCROLL_SEPOLIA_RPC);
         const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, provider);
         const ownerAddr = await contract.ownerOf(TOKEN_ID);
+        if (!ownerAddr || ownerAddr === '0x') {
+          throw new Error('Invalid owner address returned by contract.');
+        }
         console.log('Owner address:', ownerAddr);
         const tokenUri = await contract.tokenURI(TOKEN_ID);
+        if (!tokenUri || tokenUri === '0x') {
+          throw new Error('Invalid token URI returned by contract.');
+        }
         console.log('Token URI:', tokenUri);
         const metadataRes = await fetch(ipfsToHttp(tokenUri));
         if (!metadataRes.ok) {
