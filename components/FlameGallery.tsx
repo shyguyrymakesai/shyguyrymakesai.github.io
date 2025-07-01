@@ -24,8 +24,6 @@ const ABI = [
 
 const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS || '0x79FDA57A7c349aa01D88BfecCA6A3CDe91Cc0010';
 const SCROLL_SEPOLIA_RPC = import.meta.env.VITE_SCROLL_SEPOLIA_RPC || 'https://sepolia-rpc.scroll.io/';
-const ETHERSCAN_API_KEY = import.meta.env.VITE_ETHERSCAN_API_KEY || 'K1KCBYVM5T5RVQT5W8IRY74T8HFN92IYSK';
-const ETHERSCAN_API_URL = import.meta.env.VITE_ETHERSCAN_API_URL || 'https://api-sepolia.etherscan.io/api';
 
 function ipfsToHttp(url: string): string {
   if (!url) return '';
@@ -47,48 +45,29 @@ const FlameGallery: React.FC = () => {
   useEffect(() => {
     async function fetchTokens() {
       try {
-        console.log('Fetching tokens from Etherscan API...');
+        console.log('Fetching tokens via RPC events...');
         const provider = new ethers.JsonRpcProvider(SCROLL_SEPOLIA_RPC);
         const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, provider);
 
-        const response = await fetch(
-          `${ETHERSCAN_API_URL}?module=account&action=tokennfttx&contractaddress=${CONTRACT_ADDRESS}&apikey=${ETHERSCAN_API_KEY}`
+        const events = await contract.queryFilter(contract.filters.Transfer(), 0, 'latest');
+        const uniqueIds = Array.from(new Set(events.map((ev: any) => ev.args?.tokenId.toString())));
+        console.log('Found token IDs:', uniqueIds);
+
+        const metas = await Promise.all(
+          uniqueIds.map(async (id: string) => {
+            try {
+              const tokenUri = await contract.tokenURI(id);
+              const metadataRes = await fetch(ipfsToHttp(tokenUri));
+              const metadata = await metadataRes.json();
+              const ipfsImage = ipfsToHttp(metadata.image);
+              return { id, meta: { ...metadata, image: ipfsImage } };
+            } catch (err) {
+              console.error(`Error fetching metadata for token ${id}:`, err);
+              return null;
+            }
+          })
         );
-        const data = await response.json();
-        console.log('Etherscan API response:', data);
-
-        if (data.status === "1" && data.result) {
-          const uniqueIds = Array.from(new Set(data.result.map((tx) => tx.tokenID)));
-          console.log('Unique token IDs:', uniqueIds);
-
-          const metas = await Promise.all(
-            uniqueIds.map(async (id: string) => {
-              try {
-                console.log(`Fetching metadata for token ID ${id}...`);
-                const tokenUri = await contract.tokenURI(id);
-                if (!tokenUri || tokenUri === '0x') {
-                  throw new Error(`Invalid token URI returned by contract for token ID ${id}.`);
-                }
-                console.log(`Token URI for ID ${id}:`, tokenUri);
-                const metadataRes = await fetch(ipfsToHttp(tokenUri));
-                if (!metadataRes.ok) {
-                  throw new Error(`Failed to fetch metadata for token ${id}: ${metadataRes.statusText}`);
-                }
-                const metadata = await metadataRes.json();
-                console.log(`Fetched metadata for token ${id}:`, metadata);
-                const ipfsImage = ipfsToHttp(metadata.image);
-                return { id, meta: { ...metadata, image: ipfsImage } };
-              } catch (err) {
-                console.error(`Error fetching metadata for token ${id}:`, err);
-                return null;
-              }
-            })
-          );
-          setTokens(metas.filter(Boolean) as TokenInfo[]);
-        } else {
-          console.warn('No tokens found or API response invalid.');
-          setTokens([]);
-        }
+        setTokens(metas.filter(Boolean) as TokenInfo[]);
       } catch (err) {
         console.error('Error fetching tokens:', err);
         setTokens([]);
@@ -112,21 +91,26 @@ const FlameGallery: React.FC = () => {
     );
   }
 
+  const [index, setIndex] = useState(0);
+
+  const prev = () => setIndex((index - 1 + tokens.length) % tokens.length);
+  const next = () => setIndex((index + 1) % tokens.length);
+
   return (
     <section className={styles.section}>
       <h2>Minted FlameCoins</h2>
-      <div className={styles.gallery}>
-        {tokens.map((t) => (
-          <div key={t.id} className={styles.card}>
-            <img
-              src={t.meta.image}
-              alt={t.meta.name}
-              className={styles.cardImage}
-            />
-            <h3 className={styles.cardTitle}>{t.meta.name}</h3>
-            <p className={styles.cardOwner}>Token #{t.id}</p>
-          </div>
-        ))}
+      <div className={styles.carousel}>
+        <button onClick={prev} className={styles.carouselButton}>‹</button>
+        <div className={styles.card} key={tokens[index].id}>
+          <img
+            src={tokens[index].meta.image}
+            alt={tokens[index].meta.name}
+            className={styles.cardImage}
+          />
+          <h3 className={styles.cardTitle}>{tokens[index].meta.name}</h3>
+          <p className={styles.cardOwner}>Token #{tokens[index].id}</p>
+        </div>
+        <button onClick={next} className={styles.carouselButton}>›</button>
       </div>
       <a href="/" className={styles.homeButton}>Return Home</a>
     </section>
