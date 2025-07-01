@@ -41,6 +41,7 @@ interface TokenInfo {
 const FlameGallery: React.FC = () => {
   const [tokens, setTokens] = useState<TokenInfo[]>([]);
   const [loading, setLoading] = useState(true);
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     async function fetchTokens() {
@@ -78,6 +79,9 @@ const FlameGallery: React.FC = () => {
     fetchTokens();
   }, []);
 
+  const prev = () => setIndex((index - 1 + tokens.length) % tokens.length);
+  const next = () => setIndex((index + 1) % tokens.length);
+
   if (loading) {
     return <p className={styles.section}>Loading gallery...</p>;
   }
@@ -90,11 +94,6 @@ const FlameGallery: React.FC = () => {
       </section>
     );
   }
-
-  const [index, setIndex] = useState(0);
-
-  const prev = () => setIndex((index - 1 + tokens.length) % tokens.length);
-  const next = () => setIndex((index + 1) % tokens.length);
 
   return (
     <section className={styles.section}>
