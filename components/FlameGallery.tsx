@@ -7,6 +7,7 @@ interface ImportMetaEnv {
   readonly VITE_CONTRACT_ADDRESS?: string;
   readonly VITE_SCROLL_SEPOLIA_RPC?: string;
   readonly VITE_ETHERSCAN_API_KEY?: string;
+  readonly VITE_ETHERSCAN_API_URL?: string;
 }
 
 // Extend the ImportMeta interface globally for Vite
@@ -24,6 +25,7 @@ const ABI = [
 const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS || '0x79FDA57A7c349aa01D88BfecCA6A3CDe91Cc0010';
 const SCROLL_SEPOLIA_RPC = import.meta.env.VITE_SCROLL_SEPOLIA_RPC || 'https://sepolia-rpc.scroll.io/';
 const ETHERSCAN_API_KEY = import.meta.env.VITE_ETHERSCAN_API_KEY || 'K1KCBYVM5T5RVQT5W8IRY74T8HFN92IYSK';
+const ETHERSCAN_API_URL = import.meta.env.VITE_ETHERSCAN_API_URL || 'https://api-sepolia.etherscan.io/api';
 
 function ipfsToHttp(url: string): string {
   if (!url) return '';
@@ -50,7 +52,7 @@ const FlameGallery: React.FC = () => {
         const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, provider);
 
         const response = await fetch(
-          `https://api-sepolia.etherscan.io/api?module=account&action=tokennfttx&contractaddress=${CONTRACT_ADDRESS}&apikey=${ETHERSCAN_API_KEY}`
+          `${ETHERSCAN_API_URL}?module=account&action=tokennfttx&contractaddress=${CONTRACT_ADDRESS}&apikey=${ETHERSCAN_API_KEY}`
         );
         const data = await response.json();
         console.log('Etherscan API response:', data);

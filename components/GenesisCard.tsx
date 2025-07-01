@@ -2,18 +2,35 @@ import React, { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import styles from '../styles/flamecoin.module.css';
 
+// Environment variable types for Vite
+interface ImportMetaEnv {
+  readonly VITE_CONTRACT_ADDRESS?: string;
+  readonly VITE_SCROLL_SEPOLIA_RPC?: string;
+  readonly VITE_EXPLORER_BASE_URL?: string;
+}
+
+declare global {
+  interface ImportMeta {
+    readonly env: ImportMetaEnv;
+  }
+}
+
 // ERC-721 ABI fragment for ownerOf and tokenURI
 const ABI = [
   "function ownerOf(uint256 tokenId) view returns (address)",
   "function tokenURI(uint256 tokenId) view returns (string)"
 ];
 
-const CONTRACT_ADDRESS = "0x79FDA57A7c349aa01D88BfecCA6A3CDe91Cc0010";
-const EXPLORER_URL = `https://sepolia.scrollscan.com/address/${CONTRACT_ADDRESS}`;
+const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS ||
+  "0x79FDA57A7c349aa01D88BfecCA6A3CDe91Cc0010";
+const EXPLORER_BASE = import.meta.env.VITE_EXPLORER_BASE_URL ||
+  "https://sepolia.scrollscan.com/address";
+const EXPLORER_URL = `${EXPLORER_BASE}/${CONTRACT_ADDRESS}`;
 const TOKEN_ID = 0; // Genesis token ID
 
 // Scroll Sepolia RPC endpoint (public)
-const SCROLL_SEPOLIA_RPC = "https://sepolia-rpc.scroll.io/";
+const SCROLL_SEPOLIA_RPC = import.meta.env.VITE_SCROLL_SEPOLIA_RPC ||
+  "https://sepolia-rpc.scroll.io/";
 
 // Helper to convert ipfs:// to https://ipfs.io/ipfs/
 function ipfsToHttp(url: string) {
