@@ -91,3 +91,19 @@
 .homeButton:hover {
   background: #ff7f32;
 }
+
+/* Simple carousel for the gallery */
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.carouselButton {
+  background: none;
+  border: none;
+  color: #f3f4f6;
+  font-size: 2rem;
+  cursor: pointer;
+}
