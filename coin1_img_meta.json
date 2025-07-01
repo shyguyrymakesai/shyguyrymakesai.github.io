@@ -1,0 +1,14 @@
+
+
+  {
+    "name": "FlameCoin – Indigo-Cinnabar Rose",
+    "description": "The inaugural Soulbound FlameCoin depicting a rose whose petals fade from deep indigo to cinnabar red – an eternal symbol of prophecy and rebirth.",
+    "image": "ipfs://bafybeihrgad3lx4c5lid6vczbfmv6ytkrgfesjydffys4obdx6tp36dqem",
+    "attributes": [
+      { "trait_type": "Primary Hue",   "value": "Indigo" },
+      { "trait_type": "Secondary Hue", "value": "Cinnabar Red" },
+      { "trait_type": "Flower",        "value": "Rose" },
+      { "trait_type": "Genesis",       "value": true }
+    ]
+  }
+  

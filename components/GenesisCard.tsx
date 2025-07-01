@@ -8,10 +8,9 @@ const ABI = [
   "function tokenURI(uint256 tokenId) view returns (string)"
 ];
 
-const CONTRACT_ADDRESS = "0x2De7871238a0BB8A2eB3b99be26825cEdDA8aB77";
+const CONTRACT_ADDRESS = "0x79FDA57A7c349aa01D88BfecCA6A3CDe91Cc0010";
 const EXPLORER_URL = `https://sepolia.scrollscan.com/address/${CONTRACT_ADDRESS}`;
-const METADATA_URL = "https://ipfs.io/ipfs/bafkreidaeuwzeqilabl3i6peor4mn3tam4nixpyxz6q23m32dbnqgzg3di";
-const TOKEN_ID = 1;
+const TOKEN_ID = 0; // Genesis token ID
 
 // Scroll Sepolia RPC endpoint (public)
 const SCROLL_SEPOLIA_RPC = "https://sepolia-rpc.scroll.io/";
@@ -30,24 +29,30 @@ export default function GenesisCard() {
   const [owner, setOwner] = useState<string>("...");
 
   useEffect(() => {
-    // Fetch metadata from IPFS
-    fetch(METADATA_URL)
-      .then(res => res.json())
-      .then(setMeta)
-      .catch(() => setMeta(null));
-
-    // Fetch owner from Scroll Sepolia
-    async function fetchOwner() {
+    // Fetch owner and metadata for the Genesis token
+    async function fetchOwnerAndMetadata() {
       try {
+        console.log('Fetching Genesis token metadata...');
         const provider = new ethers.JsonRpcProvider(SCROLL_SEPOLIA_RPC);
         const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, provider);
         const ownerAddr = await contract.ownerOf(TOKEN_ID);
+        console.log('Owner address:', ownerAddr);
+        const tokenUri = await contract.tokenURI(TOKEN_ID);
+        console.log('Token URI:', tokenUri);
+        const metadataRes = await fetch(ipfsToHttp(tokenUri));
+        if (!metadataRes.ok) {
+          throw new Error(`Failed to fetch metadata: ${metadataRes.statusText}`);
+        }
+        const metadata = await metadataRes.json();
+        console.log('Fetched metadata:', metadata);
+        setMeta(metadata);
         setOwner(ownerAddr);
       } catch (err) {
+        console.error('Error fetching Genesis token metadata:', err);
         setOwner("Unknown");
       }
     }
-    fetchOwner();
+    fetchOwnerAndMetadata();
   }, []);
 
   if (!meta) return <div className={styles.card}>Loading...</div>;
@@ -81,15 +86,6 @@ export default function GenesisCard() {
         ))}
       </ul>
       <p>
-        <a
-          href={METADATA_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.cardLink}
-        >
-          Metadata
-        </a>
-        {' '}|{' '}
         <a
           href={EXPLORER_URL}
           target="_blank"
