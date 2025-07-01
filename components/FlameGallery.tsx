@@ -7,6 +7,7 @@ interface ImportMetaEnv {
   readonly VITE_CONTRACT_ADDRESS?: string;
   readonly VITE_SCROLL_SEPOLIA_RPC?: string;
   readonly VITE_ETHERSCAN_API_KEY?: string;
+  readonly VITE_ETHERSCAN_API_URL?: string;
 }
 
 // Extend the ImportMeta interface globally for Vite
@@ -21,14 +22,8 @@ const ABI = [
   'event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)'
 ];
 
-const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS ||
-  '0x79FDA57A7c349aa01D88BfecCA6A3CDe91Cc0010';
-const SCROLL_SEPOLIA_RPC = import.meta.env.VITE_SCROLL_SEPOLIA_RPC ||
-  'https://sepolia-rpc.scroll.io/';
-// We used to rely on the Etherscan API and an embedded key to discover minted
-// FlameCoins. That key expired which made the gallery fail silently. The
-// component now reads `Transfer` events directly from the Scroll Sepolia RPC
-// provider so no API key is required.
+const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS || '0x79FDA57A7c349aa01D88BfecCA6A3CDe91Cc0010';
+const SCROLL_SEPOLIA_RPC = import.meta.env.VITE_SCROLL_SEPOLIA_RPC || 'https://sepolia-rpc.scroll.io/';
 
 function ipfsToHttp(url: string): string {
   if (!url) return '';
