@@ -44,15 +44,6 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link
-                to="/blog"
-                className={`hover:text-blue-600 transition ${location.pathname.startsWith("/blog") ? "font-semibold underline" : ""}`}
-                onClick={() => setMobileOpen(false)}
-              >
-                Blog
-              </Link>
-            </li>
-            <li>
               <Link to="/flamecoin" className="hover:text-blue-600 transition" onClick={() => setMobileOpen(false)}>
                 FlameCoin
               </Link>
