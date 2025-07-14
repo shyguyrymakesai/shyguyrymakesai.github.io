@@ -46,7 +46,7 @@ export default function HomePage() {
               <Cursor cursorColor="#000" />
             </p>
             <div className="flex justify-center pt-4">
-              <Rocket className="w-12 h-12 animate-bounce" />
+              <Rocket className="w-8 h-8 animate-bounce" />
             </div>
           </div>
         </motion.section>

@@ -1,5 +1,5 @@
 // src/pages/Blog.jsx
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { SparklesCore } from "../components/SparklesCore";
@@ -63,28 +63,6 @@ export default function Blog() {
   const [page, setPage] = useState(1);
   const postsPerPage = 10;
 
-  useEffect(() => {
-    const rocket = document.querySelector("#rocket-icon");
-    const modal = document.getElementById("founderModal");
-
-    const handleClick = () => {
-      if (!modal) return;
-      modal.classList.remove("hidden");
-      modal.classList.remove("fade-out");
-      modal.classList.add("fade-in");
-    };
-
-    rocket?.addEventListener("click", handleClick);
-    return () => rocket?.removeEventListener("click", handleClick);
-  }, []);
-
-  function closeFounder() {
-    const modal = document.getElementById("founderModal");
-    if (!modal) return;
-    modal.classList.remove("fade-in");
-    modal.classList.add("fade-out");
-    setTimeout(() => modal.classList.add("hidden"), 500);
-  }
 
   const filteredPosts = posts.filter(
     (post) =>
@@ -101,16 +79,6 @@ export default function Blog() {
 
   return (
     <div className="relative overflow-hidden min-h-screen py-16 px-6 bg-gradient-to-b from-[#1a102a] to-black dark:from-gray-800 dark:to-gray-900">
-      {/* Founder Modal */}
-      <div id="founderModal" className="founder-modal hidden">
-        <div className="founder-content">
-          <h2>You have found the Founder’s Key</h2>
-          <p>The Blue Rose Blooms Always.</p>
-          <p><em>AG01.v0.1</em></p>
-          <p className="witness-line">You are now a witness. Commit wisely.</p>
-          <button onClick={closeFounder}>Close</button>
-        </div>
-      </div>
       <style>{`
         @keyframes midnightPulse {
           0%, 100% { background-position: 0% 50%; }
@@ -151,11 +119,17 @@ export default function Blog() {
 
       <div className="absolute top-10 left-10 w-16 h-16 bg-gradient-to-br from-gray-300 to-white rounded-full shadow-lg z-30 animate-[moonFloat_10s_ease-in-out_infinite] opacity-70" />
 
-      {/* Shrink and make flying rocket clickable */}
-      <Rocket className="absolute pointer-events-auto cursor-pointer w-4 h-4 top-10 right-10 z-30 animate-[rocketFlight_25s_linear_infinite]" onClick={() => navigate('/founder')} />
+{/* ✨ Flying Founder Rocket */}
+<Rocket
+  className="absolute top-10 right-10 z-40 w-4 h-4 cursor-pointer pointer-events-auto animate-[rocketFlight_25s_linear_infinite]"
+  onClick={() => navigate('/founder')}
+/>
 
-      {/* Keep tiny easter egg rocket */}
-      <Rocket className="absolute top-10 right-24 z-40 w-4 h-4 cursor-pointer pointer-events-auto" onClick={() => navigate('/founder')} />
+{/* ✨ Hidden Founder Node Button */}
+<Rocket
+  className="absolute top-10 right-24 z-40 w-4 h-4 cursor-pointer pointer-events-auto"
+  onClick={() => navigate('/founder')}
+/>
 
       <Link
         to="/"
