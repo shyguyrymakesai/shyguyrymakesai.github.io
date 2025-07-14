@@ -119,7 +119,17 @@ export default function Blog() {
 
       <div className="absolute top-10 left-10 w-16 h-16 bg-gradient-to-br from-gray-300 to-white rounded-full shadow-lg z-30 animate-[moonFloat_10s_ease-in-out_infinite] opacity-70" />
 
-      <Rocket className="absolute w-8 h-8 z-30 animate-[rocketFlight_25s_linear_infinite]" />
+{/* ✨ Flying Founder Rocket */}
+<Rocket
+  className="absolute top-10 right-10 z-40 w-4 h-4 cursor-pointer pointer-events-auto animate-[rocketFlight_25s_linear_infinite]"
+  onClick={() => navigate('/founder')}
+/>
+
+{/* ✨ Hidden Founder Node Button */}
+<Rocket
+  className="absolute top-10 right-24 z-40 w-4 h-4 cursor-pointer pointer-events-auto"
+  onClick={() => navigate('/founder')}
+/>
 
       <Link
         to="/"
@@ -230,6 +240,8 @@ export default function Blog() {
           <p className="italic">(coming soon)</p>
         </div>
       </div>
+
+      <Rocket className="absolute top-10 right-10 z-40 w-4 h-4 cursor-pointer pointer-events-auto" onClick={() => navigate('/founder')} />
     </div>
   );
 }

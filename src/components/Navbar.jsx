@@ -12,8 +12,10 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 w-full bg-white dark:bg-indigo-900 shadow z-50">
       <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4 relative">
         <div className="text-lg font-bold flex items-center gap-2">
-          <img src={shyguyryicon} alt="Icon" className="w-6 h-6" />
-          <Link to="/">Ryan Martinez</Link>
+          <Link to="/founder" className="flex items-center gap-2">
+            <img src={shyguyryicon} alt="Icon" className="w-6 h-6" />
+            <span>Ryan Martinez</span>
+          </Link>
         </div>
         <button
           className="navbar-mobile-menu md:hidden block text-2xl focus:outline-none"
@@ -23,7 +25,7 @@ export default function Navbar() {
           {mobileOpen ? "✕" : "☰"}
         </button>
         <div className={`flex items-center space-x-4 navbar-links${mobileOpen ? " navbar-mobile-open" : ""}`}>
-          <ul className="flex space-x-6 text-sm text-gray-700 dark:text-indigo-200 flex-col md:flex-row md:space-x-6 md:space-y-0 space-y-4 md:space-y-0">
+          <ul className="flex space-x-6 text-sm text-gray-700 dark:text-indigo-200 flex-col md:flex-row md:space-x-6 space-y-4">
             <li>
               <Link to="/" className="hover:text-blue-600 transition" onClick={() => setMobileOpen(false)}>
                 Home

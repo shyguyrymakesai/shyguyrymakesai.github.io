@@ -82,6 +82,18 @@ const FlameGallery: React.FC = () => {
   const prev = () => setIndex((index - 1 + tokens.length) % tokens.length);
   const next = () => setIndex((index + 1) % tokens.length);
 
+  const enlargeImage = (imageUrl: string) => {
+    const newWindow = window.open();
+    if (newWindow) {
+      newWindow.document.write(
+        `<img src="${imageUrl}" style="width: 100%; height: auto; display: block; margin: auto;" />`
+      );
+    }
+  };
+
+  const EXPLORER_BASE_URL = "https://sepolia.etherscan.io/token";
+  const EXPLORER_URL = `${EXPLORER_BASE_URL}/${CONTRACT_ADDRESS}`;
+
   if (loading) {
     return <p className={styles.section}>Loading gallery...</p>;
   }
@@ -98,16 +110,32 @@ const FlameGallery: React.FC = () => {
   return (
     <section className={styles.section}>
       <h2>Minted FlameCoins</h2>
-      <div className={styles.carousel}>
+      <div className={styles.carousel} style={{ justifyContent: 'center', alignItems: 'center' }}>
         <button onClick={prev} className={styles.carouselButton}>‹</button>
-        <div className={styles.card} key={tokens[index].id}>
+        <div
+          className={styles.card}
+          key={tokens[index].id}
+          style={{ cursor: 'pointer', maxWidth: '500px', margin: '0 auto' }}
+          onClick={() => enlargeImage(tokens[index].meta.image)}
+        >
           <img
             src={tokens[index].meta.image}
             alt={tokens[index].meta.name}
             className={styles.cardImage}
+            style={{ width: '100%', height: 'auto', borderRadius: '1rem' }}
           />
           <h3 className={styles.cardTitle}>{tokens[index].meta.name}</h3>
           <p className={styles.cardOwner}>Token #{tokens[index].id}</p>
+          <p>
+            <a
+              href={EXPLORER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.cardLink}
+            >
+              View on Explorer
+            </a>
+          </p>
         </div>
         <button onClick={next} className={styles.carouselButton}>›</button>
       </div>
