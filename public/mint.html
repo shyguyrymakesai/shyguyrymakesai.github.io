@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mint Kairos Glyph</title>
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <h1>Mint Kairos Glyph</h1>
+  <div id="status"></div>
+  <button id="checkout">Pay & Mint</button>
+
+  <script>
+    const statusDiv = document.getElementById('status');
+    const params = new URLSearchParams(window.location.search);
+    const s = params.get('status');
+    if (s === 'success') statusDiv.textContent = 'Payment successful!';
+    if (s === 'cancel') statusDiv.textContent = 'Payment cancelled.';
+
+    document.getElementById('checkout').addEventListener('click', async () => {
+      const res = await fetch('/create-checkout-session', { method: 'POST' });
+      const data = await res.json();
+      const stripe = Stripe('pk_test_12345');
+      stripe.redirectToCheckout({ sessionId: data.id });
+    });
+  </script>
+</body>
+</html>

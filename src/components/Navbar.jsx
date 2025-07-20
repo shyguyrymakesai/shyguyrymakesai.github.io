@@ -50,6 +50,11 @@ export default function Navbar() {
                 FlameCoin
               </Link>
             </li>
+            <li>
+              <a href="/mint.html" className="hover:text-blue-600 transition" onClick={() => setMobileOpen(false)}>
+                Mint
+              </a>
+            </li>
           </ul>
           <ThemeToggle />
         </div>
