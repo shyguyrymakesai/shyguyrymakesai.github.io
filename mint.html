@@ -1,27 +1,151 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Mint Kairos Glyph</title>
-  <script src="https://js.stripe.com/v3/"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(120deg, #232526 0%, #414345 100%);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .mint-container {
+      background: rgba(30, 30, 40, 0.95);
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 32px #000a;
+      padding: 2.5rem 2rem 2rem 2rem;
+      max-width: 400px;
+      width: 100%;
+      margin: 2rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border-radius: 0.7rem;
+      border: none;
+      background: #23242b;
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 0.7rem;
+      box-sizing: border-box;
+    }
+    input:focus, textarea:focus {
+      outline: 2px solid #ffb347;
+      background: #23242b;
+    }
+    button {
+      background: linear-gradient(90deg, #ffb347 0%, #ffcc80 100%);
+      color: #23242b;
+      font-weight: 700;
+      border: none;
+      border-radius: 0.7rem;
+      padding: 0.9rem 1.2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .status {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 1.1rem;
+      min-height: 1.5em;
+    }
+    .success {
+      color: #7fff7f;
+    }
+    .error {
+      color: #ff7f7f;
+    }
+    @media (max-width: 500px) {
+      .mint-container { padding: 1.2rem 0.5rem; }
+      h1 { font-size: 1.3rem; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Mint Kairos Glyph</h1>
-  <div id="status"></div>
-  <button id="checkout">Pay & Mint</button>
-
+  <form class="mint-container" id="mintForm" autocomplete="off">
+    <h1>Mint Kairos Glyph</h1>
+    <div>
+      <label for="recipient">Recipient Address</label>
+      <input type="text" id="recipient" name="recipient" placeholder="0x..." required pattern="^0x[a-fA-F0-9]{40}$">
+    </div>
+    <div>
+      <label for="chargedBy">Charged By</label>
+      <input type="text" id="chargedBy" name="chargedBy" maxlength="32" required placeholder="Your name or handle">
+    </div>
+    <div>
+      <label for="intention">Intention</label>
+      <textarea id="intention" name="intention" maxlength="120" required placeholder="Describe your intention..."></textarea>
+    </div>
+    <div>
+      <label for="duration">Duration (seconds)</label>
+      <input type="number" id="duration" name="duration" min="1" max="31536000" required placeholder="e.g. 3600">
+    </div>
+    <button type="submit" id="mintBtn">Pay & Mint</button>
+    <div class="status" id="status"></div>
+  </form>
   <script>
+    const form = document.getElementById('mintForm');
     const statusDiv = document.getElementById('status');
-    const params = new URLSearchParams(window.location.search);
-    const s = params.get('status');
-    if (s === 'success') statusDiv.textContent = 'Payment successful!';
-    if (s === 'cancel') statusDiv.textContent = 'Payment cancelled.';
+    const mintBtn = document.getElementById('mintBtn');
 
-    document.getElementById('checkout').addEventListener('click', async () => {
-      const res = await fetch('/create-checkout-session', { method: 'POST' });
-      const data = await res.json();
-      const stripe = Stripe('pk_test_12345');
-      stripe.redirectToCheckout({ sessionId: data.id });
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusDiv.textContent = '';
+      mintBtn.disabled = true;
+      mintBtn.textContent = 'Processing...';
+      const data = {
+        recipient: form.recipient.value.trim(),
+        chargedBy: form.chargedBy.value.trim(),
+        intention: form.intention.value.trim(),
+        duration: parseInt(form.duration.value, 10)
+      };
+      try {
+        const res = await fetch('/api/mint', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        if (result.success) {
+          statusDiv.innerHTML = `<span class="success">Minted! Token ID: <b>${result.tokenId}</b><br>Tx: <a href=\"https://sepolia.scrollscan.com/tx/${result.txHash}\" target=\"_blank\">View on Explorer</a></span>`;
+          form.reset();
+        } else {
+          statusDiv.innerHTML = `<span class="error">${result.error || 'Mint failed.'}</span>`;
+        }
+      } catch (err) {
+        statusDiv.innerHTML = `<span class="error">${err.message || 'Mint failed.'}</span>`;
+      }
+      mintBtn.disabled = false;
+      mintBtn.textContent = 'Pay & Mint';
     });
   </script>
 </body>
