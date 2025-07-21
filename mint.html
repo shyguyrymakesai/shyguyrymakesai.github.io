@@ -155,7 +155,8 @@
         const duration = parseInt(form.duration.value, 10);
 
         statusDiv.textContent = 'Sending transaction...';
-        const tx = await contract.releaseKame(recipient, chargedBy, intention, duration);
+        const image = "ipfs://bafkreihrn4aqz2fp5m4sgsmcffm5qqlsx4hwkg3s2ptnrevm4wgstj5xli";
+        const tx = await contract.releaseKame(recipient, chargedBy, intention, duration, image);
 
         statusDiv.innerHTML = `Transaction sent: <a href="${EXPLORER_BASE}${tx.hash}" target="_blank">${tx.hash}</a>`;
 
