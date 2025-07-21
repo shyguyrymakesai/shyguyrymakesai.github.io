@@ -10,6 +10,7 @@ import TagPage from "./pages/TagPage";
 import CategoryPage from "./pages/CategoryPage";
 import ProjectPage from "./pages/projects/[slug].tsx";
 import FlameCoinPage from "../pages/flamecoin";
+import KamePage from "../pages/kame";
 import FounderPage from "./pages/founder";
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/category/:category" element={<CategoryPage />} />
         <Route path="/projects/:slug" element={<ProjectPage />} />
         <Route path="/flamecoin" element={<FlameCoinPage />} />
+        <Route path="/kame" element={<KamePage />} />
         <Route path="/founder" element={<FounderPage />} />
       </Routes>
     </HashRouter>
