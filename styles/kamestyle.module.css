@@ -1,0 +1,74 @@
+.page {
+  min-height: 100vh;
+  background-color: #0c0c0c;
+  color: #f3f4f6;
+  font-family: sans-serif;
+}
+.section {
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.card {
+  background: rgba(255,255,255,0.1);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  text-align: center;
+}
+.cardImage {
+  width: 200px;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.cardOwner {
+  margin-bottom: 0.5rem;
+}
+.cardDescription {
+  margin-bottom: 0.5rem;
+}
+.cardLink {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.homeButton {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #ff5e00;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.homeButton:hover {
+  background: #ff7f32;
+}
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.carouselButton {
+  background: none;
+  border: none;
+  color: #f3f4f6;
+  font-size: 2rem;
+  cursor: pointer;
+}
