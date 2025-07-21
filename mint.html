@@ -109,14 +109,18 @@
       <label for="duration">Duration (seconds)</label>
       <input type="number" id="duration" name="duration" min="1" max="31536000" required placeholder="e.g. 3600">
     </div>
-    <button type="submit" id="mintBtn">Pay & Mint</button>
+    <button type="submit" id="mintBtn">Pay & Mint (Backend)</button>
+    <button type="button" id="metaMaskMintBtn" style="background:linear-gradient(90deg,#80b3ff 0%,#b3e0ff 100%);color:#23242b;margin-top:0.5rem;">Mint Directly (MetaMask)</button>
     <div class="status" id="status"></div>
   </form>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.6.2/dist/ethers.umd.min.js"></script>
   <script>
     const form = document.getElementById('mintForm');
     const statusDiv = document.getElementById('status');
     const mintBtn = document.getElementById('mintBtn');
+    const metaMaskMintBtn = document.getElementById('metaMaskMintBtn');
 
+    // Backend Pay & Mint
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       statusDiv.textContent = '';
@@ -145,7 +149,43 @@
         statusDiv.innerHTML = `<span class="error">${err.message || 'Mint failed.'}</span>`;
       }
       mintBtn.disabled = false;
-      mintBtn.textContent = 'Pay & Mint';
+      mintBtn.textContent = 'Pay & Mint (Backend)';
+    });
+
+    // Direct MetaMask Mint
+    metaMaskMintBtn.addEventListener('click', async () => {
+      statusDiv.textContent = '';
+      metaMaskMintBtn.disabled = true;
+      metaMaskMintBtn.textContent = 'Connecting...';
+      if (!window.ethereum) {
+        statusDiv.innerHTML = '<span class="error">MetaMask not detected.</span>';
+        metaMaskMintBtn.disabled = false;
+        metaMaskMintBtn.textContent = 'Mint Directly (MetaMask)';
+        return;
+      }
+      try {
+        const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+        const abi = [
+          "function releaseKame(address recipient, string chargedBy, string intention, uint256 duration) public returns (uint256)"
+        ];
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const signer = await provider.getSigner();
+        const contract = new ethers.Contract(contractAddress, abi, signer);
+        const recipient = form.recipient.value.trim();
+        const chargedBy = form.chargedBy.value.trim();
+        const intention = form.intention.value.trim();
+        const duration = parseInt(form.duration.value, 10);
+        statusDiv.textContent = 'Sending transaction...';
+        const tx = await contract.releaseKame(recipient, chargedBy, intention, duration);
+        statusDiv.innerHTML = `Transaction sent: <a href="https://sepolia.scrollscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
+        const receipt = await tx.wait();
+        statusDiv.innerHTML = `<span class="success">✅ Minted! TX confirmed in block ${receipt.blockNumber}<br><a href="https://sepolia.scrollscan.com/tx/${tx.hash}" target="_blank">View on Explorer</a></span>`;
+        form.reset();
+      } catch (err) {
+        statusDiv.innerHTML = `<span class="error">❌ Error: ${err.message || err}</span>`;
+      }
+      metaMaskMintBtn.disabled = false;
+      metaMaskMintBtn.textContent = 'Mint Directly (MetaMask)';
     });
   </script>
 </body>
