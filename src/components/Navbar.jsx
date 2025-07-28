@@ -51,9 +51,9 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <a href="/mint.html" className="hover:text-blue-600 transition" onClick={() => setMobileOpen(false)}>
-                Mint
-              </a>
+              <Link to="/blog" className="hover:text-blue-600 transition" onClick={() => setMobileOpen(false)}>
+                Blog
+              </Link>
             </li>
           </ul>
           <ThemeToggle />
