@@ -1,169 +1,64 @@
-import React, { useState } from "react";
-import { Mail, Github, Linkedin } from "lucide-react";
-import { toast, Toaster } from "react-hot-toast";
+import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import shyguyryicon from "../assets/shyguyry_icon.png";
 import Navbar from "../components/Navbar";
 import { SparklesCore } from "../components/SparklesCore";
+import { Mail, Github, Linkedin } from "lucide-react";
 
 export default function ContactPage() {
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    contact: "",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const { contact } = form;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^[\d\s\-()+]+$/;
-
-    if (!emailRegex.test(contact) && !phoneRegex.test(contact)) {
-      toast.error("Please enter a valid email or phone number.");
-      return;
-    }
-
-    toast.success("Message sent!");
-    setForm({
-      firstName: "",
-      lastName: "",
-      contact: "",
-      message: "",
-    });
-  };
-
   return (
-    <main className="relative min-h-screen font-sans bg-gradient-to-b from-emerald-100 to-emerald-200 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
+    <main className="min-h-screen font-sans bg-white dark:bg-carbon-900 relative overflow-hidden">
       <Navbar />
-      <SparklesCore className="absolute inset-0 -z-10 opacity-40" />
-      <Toaster position="top-center" reverseOrder={false} />
+      <div className="pt-24" />
 
-      {/* Hero Banner */}
-      <section className="pt-32 pb-16 px-6 text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-5xl font-bold text-emerald-900 mb-4"
-        >
-          Let’s Connect
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-lg text-emerald-800 max-w-xl mx-auto"
-        >
-          Have a project, question, or idea? Drop me a note below and I’ll get back to you.
-        </motion.p>
-      </section>
+      {/* Sparkles backdrop */}
+      <div className="absolute inset-0 pointer-events-none opacity-60">
+        <SparklesCore
+          id="tsparticlesfullpage"
+          background="transparent"
+          minSize={0.3}
+          maxSize={1.0}
+          particleDensity={120}
+          className="w-full h-full"
+          particleColor="#34d399"
+        />
+      </div>
 
-      {/* Form + Info */}
-      <section className="relative z-10 flex flex-col md:flex-row items-start justify-center gap-10 px-6 pb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="w-full max-w-md bg-white/70 dark:bg-carbon-800/60 backdrop-blur-md border border-emerald-200 dark:border-carbon-600 rounded-xl shadow-xl p-8"
-        >
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input
-                type="text"
-                name="firstName"
-                required
-                placeholder="First Name"
-                value={form.firstName}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-emerald-200 rounded-md"
-              />
-              <input
-                type="text"
-                name="lastName"
-                required
-                placeholder="Last Name"
-                value={form.lastName}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-emerald-200 rounded-md"
-              />
-            </div>
-            <input
-              type="text"
-              name="contact"
-              required
-              placeholder="Email or Phone Number"
-              value={form.contact}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-emerald-200 rounded-md"
-            />
-            <textarea
-              name="message"
-              required
-              rows="5"
-              placeholder="Your Message"
-              value={form.message}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-emerald-200 rounded-md"
-            />
-            <button
-              type="submit"
-              className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-md font-medium shadow"
-            >
-              Send Message
-            </button>
-          </form>
-        </motion.div>
+      {/* Simple links */}
+      <section className="relative z-10 max-w-xl mx-auto px-6 py-16 text-center">
+        <h1 className="text-3xl md:text-4xl font-bold">Get in touch</h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-300">
+          Reach me directly via any of the links below.
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="w-full max-w-md bg-white/70 dark:bg-carbon-800/60 backdrop-blur-md border border-emerald-200 dark:border-carbon-600 rounded-xl shadow-xl p-8 space-y-4"
-        >
-          <h2 className="text-2xl font-bold text-green-900 text-center">Prefer direct contact?</h2>
-          <div className="flex items-center gap-3 text-gray-700">
-            <Mail className="text-green-800" size={20} />
-            <span className="font-bold text-green-900">Email:</span>
-            <span>ryan.martinez2@protonmail.com</span>
-          </div>
-          <div className="flex items-center gap-3 text-gray-700">
-            <Github className="text-green-800" size={20} />
-            <span className="font-bold text-green-900">GitHub:</span>
+        <div className="mt-8 space-y-4">
+          <a
+            href="mailto:ryan.martinez2@protonmail.com"
+            className="inline-flex items-center justify-center gap-2 w-full md:w-auto px-6 py-3 rounded-full border border-gray-300 dark:border-white/20 hover:bg-white/60 dark:hover:bg-white/10 transition"
+          >
+            <Mail className="w-5 h-5" /> ryan.martinez2@protonmail.com
+          </a>
+          <div className="flex flex-col md:flex-row gap-4 justify-center">
             <a
               href="https://github.com/shyguyrymakesai"
-              className="text-green-800 hover:underline"
-              target="_blank" rel="noopener noreferrer"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-gray-300 dark:border-white/20 hover:bg-white/60 dark:hover:bg-white/10 transition"
             >
-              shyguyrymakesai
+              <Github className="w-5 h-5" /> github.com/shyguyrymakesai
             </a>
-          </div>
-          <div className="flex items-center gap-3 text-gray-700">
-            <Linkedin className="text-green-800" size={20} />
-            <span className="font-bold text-green-900">LinkedIn:</span>
             <a
-              href="https://linkedin.com/in/ryan-martinez13"
-              className="text-green-800 hover:underline"
-              target="_blank" rel="noopener noreferrer"
+              href="https://www.linkedin.com/in/ryan-martinez13"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-gray-300 dark:border-white/20 hover:bg-white/60 dark:hover:bg-white/10 transition"
             >
-              ryan-martinez13
+              <Linkedin className="w-5 h-5" /> linkedin.com/in/ryan-martinez13
             </a>
           </div>
-        </motion.div>
+        </div>
       </section>
 
-      <Link
-        to="/"
-        className="fixed bottom-6 left-6 z-50 px-4 py-2 text-sm font-semibold text-white bg-emerald-700/70 backdrop-blur rounded-full shadow-lg hover:bg-emerald-700"
-      >
+      <Link to="/" className="fixed bottom-6 left-6 z-50 px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow">
         ← Back to Home
       </Link>
     </main>

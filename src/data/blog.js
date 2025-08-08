@@ -8,14 +8,22 @@ const files = import.meta.glob('../posts/*.md', {
   eager: true,
 });
 
-const posts = Object.entries(files).map(([path, raw]) => {
-  const { data, content } = matter(raw);
-  const slug = path.split('/').pop().replace(/\.md$/, '');
-  return {
-    ...data,
-    content,
-    slug,
-  };
-}).sort((a, b) => new Date(b.date) - new Date(a.date));
+const EXCLUDE_TITLES = [
+  'som vamp shit',
+  'out of your depth',
+].map((s) => s.toLowerCase());
+
+const posts = Object.entries(files)
+  .map(([path, raw]) => {
+    const { data, content } = matter(raw);
+    const slug = path.split('/').pop().replace(/\.md$/, '');
+    return {
+      ...data,
+      content,
+      slug,
+    };
+  })
+  .sort((a, b) => new Date(b.date) - new Date(a.date))
+  .filter((p) => !EXCLUDE_TITLES.some((t) => (p.title || '').toLowerCase().includes(t)));
 
 export { posts };

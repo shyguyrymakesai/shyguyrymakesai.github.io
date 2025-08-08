@@ -1,16 +1,14 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import heroImage from "../assets/hero.jpg";
 import demoImage from "../assets/Demo_SS.png";
-import shyguyryicon from "../assets/shyguyry_icon.png";
 import Navbar from "../components/Navbar";
 import { SparklesCore } from "../components/SparklesCore";
 import Rocket from "../components/Rocket";
 
 export default function HomePage() {
-  const location = useLocation();
   const [typedText] = useTypewriter({
     words: [
       "AI Engineer building agentic LLM systems",
@@ -179,35 +177,6 @@ export default function HomePage() {
             </div>
           </div>
         </motion.section>
-
-        {/* Contact Section */}
-        <motion.footer
-          id="contact"
-          className="bg-gray-100 dark:bg-carbon-800 py-16 px-6 text-center text-sm text-gray-600 dark:text-black"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="mb-4 flex justify-center">
-            <img
-              src={shyguyryicon}
-              alt="Cute avatar of Ryan coding"
-              className="w-16 h-16 object-contain opacity-90"
-            />
-          </div>
-          <p>📧 ryan.martinez2@protonmail.com</p>
-          <p>
-            🔗 GitHub: {" "}
-            <a
-              href="https://github.com/shyguyrymakesai"
-              className="text-blue-600 hover:underline"
-            >
-              shyguyrymakesai
-            </a>
-          </p>
-          <p className="mt-4">Let’s collaborate — or just say hi.</p>
-        </motion.footer>
       </div>
     </main>
   );

@@ -8,9 +8,8 @@ import Blog from "./pages/Blog";
 import BlogEntryPage from "./pages/BlogEntryPage";
 import TagPage from "./pages/TagPage";
 import CategoryPage from "./pages/CategoryPage";
-import ProjectPage from "./pages/projects/[slug].tsx";
-import FlameCoinPage from "../pages/flamecoin";
-import KamePage from "../pages/kame";
+import ProjectPage from "./pages/projects/[slug]";
+import FlameCoinPage from "../pages/flamecoin"; // TODO: move to src/pages/flamecoin.tsx if desired
 import FounderPage from "./pages/founder";
 
 export default function App() {
@@ -28,7 +27,6 @@ export default function App() {
         <Route path="/category/:category" element={<CategoryPage />} />
         <Route path="/projects/:slug" element={<ProjectPage />} />
         <Route path="/flamecoin" element={<FlameCoinPage />} />
-        <Route path="/kame" element={<KamePage />} />
         <Route path="/founder" element={<FounderPage />} />
       </Routes>
     </HashRouter>

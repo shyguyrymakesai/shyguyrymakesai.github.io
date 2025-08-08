@@ -12,7 +12,7 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 w-full bg-white dark:bg-indigo-900 shadow z-50">
       <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4 relative">
         <div className="text-lg font-bold flex items-center gap-2">
-          <Link to="/founder" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2" onClick={() => setMobileOpen(false)}>
             <img src={shyguyryicon} alt="Icon" className="w-6 h-6" />
             <span>Ryan Martinez</span>
           </Link>
@@ -27,7 +27,7 @@ export default function Navbar() {
         <div className={`flex items-center space-x-4 navbar-links${mobileOpen ? " navbar-mobile-open" : ""}`}>
           <ul className="flex space-x-6 text-sm text-gray-700 dark:text-indigo-200 flex-col md:flex-row md:space-x-6 space-y-4">
             <li>
-              <Link to="/" className="hover:text-blue-600 transition" onClick={() => setMobileOpen(false)}>
+              <Link to="/" className={`hover:text-blue-600 transition ${location.pathname === "/" ? "font-semibold underline" : ""}`} onClick={() => setMobileOpen(false)}>
                 Home
               </Link>
             </li>
@@ -41,19 +41,30 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="hover:text-blue-600 transition" onClick={() => setMobileOpen(false)}>
+              <Link to="/contact" className={`hover:text-blue-600 transition ${location.pathname.startsWith("/contact") ? "font-semibold underline" : ""}`} onClick={() => setMobileOpen(false)}>
                 Contact
               </Link>
             </li>
             <li>
-              <Link to="/flamecoin" className="hover:text-blue-600 transition" onClick={() => setMobileOpen(false)}>
+              <Link to="/flamecoin" className={`hover:text-blue-600 transition ${location.pathname.startsWith("/flamecoin") ? "font-semibold underline" : ""}`} onClick={() => setMobileOpen(false)}>
                 FlameCoin
               </Link>
             </li>
             <li>
-              <Link to="/blog" className="hover:text-blue-600 transition" onClick={() => setMobileOpen(false)}>
+              <Link to="/blog" className={`hover:text-blue-600 transition ${location.pathname.startsWith("/blog") ? "font-semibold underline" : ""}`} onClick={() => setMobileOpen(false)}>
                 Blog
               </Link>
+            </li>
+            <li>
+              <a
+                href="https://echoleague.xyz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-white bg-gradient-to-r from-pink-500 via-fuchsia-500 to-cyan-400 px-3 py-1 rounded-full shadow hover:scale-105 transition-all border-2 border-pink-400"
+                onClick={() => setMobileOpen(false)}
+              >
+                My Merch
+              </a>
             </li>
           </ul>
           <ThemeToggle />
