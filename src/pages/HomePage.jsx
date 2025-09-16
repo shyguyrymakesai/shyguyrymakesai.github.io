@@ -38,6 +38,29 @@ export default function HomePage() {
             className="absolute inset-0 w-full h-full object-contain opacity-30 pointer-events-none"
           />
           <div className="relative z-10 space-y-4">
+            <motion.div
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+              className="flex justify-center"
+            >
+              <div className="relative inline-flex">
+                <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-fuchsia-500 via-blue-500 to-emerald-400 opacity-70 blur-2xl" />
+                <div className="relative flex items-center gap-4 rounded-full bg-white/80 px-7 py-3 shadow-xl backdrop-blur-xl ring-1 ring-white/60 dark:bg-carbon-900/70 dark:ring-indigo-400/30">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-fuchsia-500 via-purple-500 to-blue-500 text-2xl text-white shadow-inner">
+                    ✨
+                  </span>
+                  <div className="text-left">
+                    <p className="text-xs uppercase tracking-[0.45em] text-gray-500 dark:text-indigo-200/60">
+                      Demo Spotlight
+                    </p>
+                    <p className="text-2xl font-extrabold leading-tight bg-gradient-to-r from-fuchsia-600 via-blue-500 to-emerald-400 bg-clip-text text-transparent">
+                      Hey J.D.!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
             <h1 className="text-6xl font-extrabold tracking-tight">Ryan Martinez</h1>
             <p className="text-xl text-gray-700 max-w-xl mx-auto h-8">
               {typedText}
