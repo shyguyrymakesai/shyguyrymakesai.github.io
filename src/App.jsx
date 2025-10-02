@@ -11,6 +11,8 @@ import CategoryPage from "./pages/CategoryPage";
 import ProjectPage from "./pages/projects/[slug]";
 import FlameCoinPage from "../pages/flamecoin"; // TODO: move to src/pages/flamecoin.tsx if desired
 import FounderPage from "./pages/founder";
+import HabitTrackerPage from "./pages/HabitTrackerPage";
+import DemoPage from "./pages/DemoPage";
 
 export default function App() {
   return (
@@ -28,6 +30,8 @@ export default function App() {
         <Route path="/projects/:slug" element={<ProjectPage />} />
         <Route path="/flamecoin" element={<FlameCoinPage />} />
         <Route path="/founder" element={<FounderPage />} />
+        <Route path="/habit-tracker" element={<HabitTrackerPage />} />
+        <Route path="/demo" element={<DemoPage />} />
       </Routes>
     </HashRouter>
   );
