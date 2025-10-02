@@ -7,6 +7,48 @@
     <title>Habit Tracker</title>
     <script type="module" crossorigin src="./assets/index-CiK7rpSC.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-DMJlGCky.css">
+    <style>
+      /* Force light mode and fix mobile card visibility */
+      body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+      }
+      
+      /* Fix cards that appear black on mobile */
+      div[class*="card"], 
+      div[class*="Card"],
+      .bg-carbon-900,
+      .dark\:bg-carbon-900,
+      .bg-gray-900,
+      .dark\:bg-gray-900 {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+      }
+      
+      /* Fix quote cards specifically */
+      blockquote,
+      [class*="quote"],
+      [class*="Quote"],
+      div[class*="bg-"] {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        border-color: #e5e7eb !important;
+      }
+      
+      /* Override any dark backgrounds */
+      * {
+        background-color: inherit;
+      }
+      
+      body * {
+        color: #000000 !important;
+      }
+      
+      /* Ensure text is visible */
+      p, h1, h2, h3, h4, h5, h6, span, div, blockquote, q {
+        color: #000000 !important;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
