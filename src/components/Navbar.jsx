@@ -46,25 +46,9 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to="/flamecoin" className={`hover:text-blue-600 transition ${location.pathname.startsWith("/flamecoin") ? "font-semibold underline" : ""}`} onClick={() => setMobileOpen(false)}>
-                FlameCoin
+              <Link to="/demo" className={`hover:text-blue-600 transition ${location.pathname.startsWith("/demo") ? "font-semibold underline" : ""}`} onClick={() => setMobileOpen(false)}>
+                Demo
               </Link>
-            </li>
-            <li>
-              <Link to="/blog" className={`hover:text-blue-600 transition ${location.pathname.startsWith("/blog") ? "font-semibold underline" : ""}`} onClick={() => setMobileOpen(false)}>
-                Blog
-              </Link>
-            </li>
-            <li>
-              <a
-                href="https://echoleague.xyz"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-bold text-white bg-gradient-to-r from-pink-500 via-fuchsia-500 to-cyan-400 px-3 py-1 rounded-full shadow hover:scale-105 transition-all border-2 border-pink-400"
-                onClick={() => setMobileOpen(false)}
-              >
-                My Merch
-              </a>
             </li>
           </ul>
           <ThemeToggle />

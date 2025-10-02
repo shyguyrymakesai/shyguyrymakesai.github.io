@@ -1,20 +1,23 @@
-import { useEffect } from 'react';
-
 export default function DemoPage() {
-  useEffect(() => {
-    // Redirect to the standalone demo app
-    window.location.href = '/demo/index.html';
-  }, []);
-
   return (
     <div style={{ 
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'center', 
+      width: '100%', 
       height: '100vh',
-      fontFamily: 'system-ui, -apple-system, sans-serif'
+      margin: 0,
+      padding: 0,
+      overflow: 'hidden'
     }}>
-      <p>Redirecting to Demo...</p>
+      <iframe 
+        src="/demo/index.html"
+        style={{
+          width: '100%',
+          height: '100%',
+          border: 'none',
+          margin: 0,
+          padding: 0
+        }}
+        title="Demo App"
+      />
     </div>
   );
 }

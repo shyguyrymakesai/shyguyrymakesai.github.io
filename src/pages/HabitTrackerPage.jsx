@@ -1,20 +1,23 @@
-import { useEffect } from 'react';
-
 export default function HabitTrackerPage() {
-  useEffect(() => {
-    // Redirect to the standalone habit tracker app
-    window.location.href = '/habit_tracker/index.html';
-  }, []);
-
   return (
     <div style={{ 
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'center', 
+      width: '100%', 
       height: '100vh',
-      fontFamily: 'system-ui, -apple-system, sans-serif'
+      margin: 0,
+      padding: 0,
+      overflow: 'hidden'
     }}>
-      <p>Redirecting to Habit Tracker...</p>
+      <iframe 
+        src="/habit_tracker/index.html"
+        style={{
+          width: '100%',
+          height: '100%',
+          border: 'none',
+          margin: 0,
+          padding: 0
+        }}
+        title="Habit Tracker App"
+      />
     </div>
   );
 }
