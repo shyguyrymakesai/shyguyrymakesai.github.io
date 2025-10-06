@@ -32,15 +32,6 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link
-                to="/agents"
-                className={`hover:text-blue-600 transition ${location.pathname.startsWith("/agents") ? "font-semibold underline" : ""}`}
-                onClick={() => setMobileOpen(false)}
-              >
-                Agents
-              </Link>
-            </li>
-            <li>
               <Link to="/contact" className={`hover:text-blue-600 transition ${location.pathname.startsWith("/contact") ? "font-semibold underline" : ""}`} onClick={() => setMobileOpen(false)}>
                 Contact
               </Link>

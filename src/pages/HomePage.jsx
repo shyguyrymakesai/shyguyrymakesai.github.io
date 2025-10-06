@@ -56,7 +56,9 @@ export default function HomePage() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl font-bold text-center mb-10">Featured Projects</h2>
-          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          
+          {/* AI Assistant Project */}
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-20">
               <Link to="/projects/ai-assistant" className="rounded-xl overflow-hidden shadow-lg border bg-white dark:bg-carbon-700 block">
               <img
                 src={demoImage}
@@ -81,14 +83,52 @@ export default function HomePage() {
                 ))}
               </ul>
               <div className="mt-6 text-center md:text-left">
-                <Link
-                  to="/agents"
+                <a
+                  href="https://github.com/shyguyrymakesai/WhatsApp_AI_Agent"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block px-8 py-3 text-lg font-semibold border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 hover:text-blue-800 transition"
                 >
                   Explore My Live Agents →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Habit Tracker Project */}
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div className="order-2 md:order-1">
+              <h2 className="text-3xl font-bold mb-4">Habit Tracker App</h2>
+              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                A React-based habit tracking application with a clean, intuitive interface. Track your daily habits, 
+                visualize your progress, and build better routines. Features local storage persistence and a responsive design.
+              </p>
+              <ul className="flex flex-wrap gap-3 text-sm text-gray-600 dark:text-gray-400 mb-6">
+                {['React', 'Local Storage', 'Responsive Design', 'UI/UX'].map((tag) => (
+                  <li
+                    key={tag}
+                    className="bg-white dark:bg-carbon-700 px-3 py-1 rounded-full shadow-sm border hover:bg-blue-50 dark:hover:bg-carbon-600 hover:text-blue-700 dark:text-carbon-200 dark:hover:text-blue-300 transition"
+                  >
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 text-center md:text-left">
+                <Link
+                  to="/habit-tracker"
+                  className="inline-block px-8 py-3 text-lg font-semibold border-2 border-purple-600 text-purple-600 rounded-full hover:bg-purple-50 hover:text-purple-800 transition"
+                >
+                  Try It Out →
                 </Link>
               </div>
             </div>
+            <Link to="/habit-tracker" className="rounded-xl overflow-hidden shadow-lg border bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900 dark:to-blue-900 block h-64 flex items-center justify-center order-1 md:order-2">
+              <div className="text-center p-8">
+                <div className="text-6xl mb-4">📊</div>
+                <h3 className="text-2xl font-bold text-gray-800 dark:text-white">Habit Tracker</h3>
+                <p className="text-gray-600 dark:text-gray-300 mt-2">Click to explore</p>
+              </div>
+            </Link>
           </div>
         </motion.section>
 
