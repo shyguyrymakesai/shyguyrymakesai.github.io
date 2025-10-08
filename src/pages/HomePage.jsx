@@ -115,14 +115,14 @@ export default function HomePage() {
               </ul>
               <div className="mt-6 text-center md:text-left">
                 <Link
-                  to="/habit-tracker"
+                  to="/demo"
                   className="inline-block px-8 py-3 text-lg font-semibold border-2 border-purple-600 text-purple-600 rounded-full hover:bg-purple-50 hover:text-purple-800 transition"
                 >
                   Try It Out →
                 </Link>
               </div>
             </div>
-            <Link to="/habit-tracker" className="rounded-xl overflow-hidden shadow-lg border bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900 dark:to-blue-900 block h-64 flex items-center justify-center order-1 md:order-2">
+            <Link to="/demo" className="rounded-xl overflow-hidden shadow-lg border bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900 dark:to-blue-900 block h-64 flex items-center justify-center order-1 md:order-2">
               <div className="text-center p-8">
                 <div className="text-6xl mb-4">📊</div>
                 <h3 className="text-2xl font-bold text-gray-800 dark:text-white">Habit Tracker</h3>
