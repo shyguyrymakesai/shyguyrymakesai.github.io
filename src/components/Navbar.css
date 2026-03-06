@@ -7,6 +7,9 @@
     color: #333;
     z-index: 101;
   }
+  .dark .navbar-mobile-menu {
+    color: #e5e7eb;
+  }
   .navbar-links {
     display: none !important;
   }
@@ -21,6 +24,10 @@
     z-index: 100;
     padding: 1rem 0;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .dark .navbar-links.navbar-mobile-open {
+    background: #1e1e2e;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
   .navbar-links ul {
     flex-direction: column;

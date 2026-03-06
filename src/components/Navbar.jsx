@@ -14,7 +14,7 @@ export default function Navbar() {
         <div className="text-lg font-bold flex items-center gap-2">
           <Link to="/" className="flex items-center gap-2" onClick={() => setMobileOpen(false)}>
             <img src={shyguyryicon} alt="Icon" className="w-6 h-6" />
-            <span>Ryan Martinez</span>
+            <span className="dark:text-white">Ryan Martinez</span>
           </Link>
         </div>
         <button

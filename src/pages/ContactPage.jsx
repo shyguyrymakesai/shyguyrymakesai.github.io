@@ -25,7 +25,7 @@ export default function ContactPage() {
 
       {/* Simple links */}
       <section className="relative z-10 max-w-xl mx-auto px-6 py-16 text-center">
-        <h1 className="text-3xl md:text-4xl font-bold">Get in touch</h1>
+        <h1 className="text-3xl md:text-4xl font-bold dark:text-white">Get in touch</h1>
         <p className="mt-2 text-gray-600 dark:text-gray-300">
           Reach me directly via any of the links below.
         </p>
@@ -33,7 +33,7 @@ export default function ContactPage() {
         <div className="mt-8 space-y-4">
           <a
             href="mailto:ryan.martinez2@protonmail.com"
-            className="inline-flex items-center justify-center gap-2 w-full md:w-auto px-6 py-3 rounded-full border border-gray-300 dark:border-white/20 hover:bg-white/60 dark:hover:bg-white/10 transition"
+            className="inline-flex items-center justify-center gap-2 w-full md:w-auto px-6 py-3 rounded-full border border-gray-300 dark:border-white/20 hover:bg-white/60 dark:hover:bg-white/10 dark:text-gray-200 transition"
           >
             <Mail className="w-5 h-5" /> ryan.martinez2@protonmail.com
           </a>
@@ -42,7 +42,7 @@ export default function ContactPage() {
               href="https://github.com/shyguyrymakesai"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-gray-300 dark:border-white/20 hover:bg-white/60 dark:hover:bg-white/10 transition"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-gray-300 dark:border-white/20 hover:bg-white/60 dark:hover:bg-white/10 dark:text-gray-200 transition"
             >
               <Github className="w-5 h-5" /> github.com/shyguyrymakesai
             </a>
@@ -50,7 +50,7 @@ export default function ContactPage() {
               href="https://www.linkedin.com/in/ryan-martinez13"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-gray-300 dark:border-white/20 hover:bg-white/60 dark:hover:bg-white/10 transition"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-gray-300 dark:border-white/20 hover:bg-white/60 dark:hover:bg-white/10 dark:text-gray-200 transition"
             >
               <Linkedin className="w-5 h-5" /> linkedin.com/in/ryan-martinez13
             </a>

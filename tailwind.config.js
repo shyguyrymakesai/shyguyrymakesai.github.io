@@ -17,7 +17,7 @@ export default {
         },
         // override default background and text
         background: '#181a1b',
-        foreground: '#000',
+        foreground: '#e5e7eb',
       },
     },
   },

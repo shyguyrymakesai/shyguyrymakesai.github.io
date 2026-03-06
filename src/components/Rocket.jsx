@@ -24,7 +24,7 @@ export default function Rocket({ className = "", style = {}, ...props }) {
         animate={launch ? { rotate: 720, scale: 2, opacity: 0 } : {}}
         transition={{ duration: 0.8 }}
         onAnimationComplete={() => {
-          if (launch) navigate("/founder");
+          if (launch) navigate("/");
         }}
       >
         <path

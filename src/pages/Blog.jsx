@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { SparklesCore } from "../components/SparklesCore";
 import { Button } from "../components/Button";
-import Rocket from "../components/Rocket";
 import shyguyryicon from "../assets/shyguyry_futuristic_icon.png";
 import { posts } from "../data/blog";
 import ReactMarkdown from "react-markdown";
@@ -88,13 +87,6 @@ export default function Blog() {
           0%, 100% { transform: translateY(0) rotate(0deg); }
           50% { transform: translateY(-8px) rotate(1deg); }
         }
-        @keyframes rocketFlight {
-          0% { transform: translate(-10vw, 110vh) rotate(45deg); }
-          25% { transform: translate(110vw, 80vh) rotate(90deg); }
-          50% { transform: translate(80vw, -20vh) rotate(180deg); }
-          75% { transform: translate(-20vw, 10vh) rotate(270deg); }
-          100% { transform: translate(-10vw, 110vh) rotate(405deg); }
-        }
       `}</style>
 
       <div className="absolute inset-0 z-0 pointer-events-none" style={{ isolation: "isolate" }}>
@@ -119,17 +111,7 @@ export default function Blog() {
 
       <div className="absolute top-10 left-10 w-16 h-16 bg-gradient-to-br from-gray-300 to-white rounded-full shadow-lg z-30 animate-[moonFloat_10s_ease-in-out_infinite] opacity-70" />
 
-{/* ✨ Flying Founder Rocket */}
-<Rocket
-  className="absolute top-10 right-10 z-40 w-4 h-4 cursor-pointer pointer-events-auto animate-[rocketFlight_25s_linear_infinite]"
-  onClick={() => navigate('/founder')}
-/>
 
-{/* ✨ Hidden Founder Node Button */}
-<Rocket
-  className="absolute top-10 right-24 z-40 w-4 h-4 cursor-pointer pointer-events-auto"
-  onClick={() => navigate('/founder')}
-/>
 
       <Link
         to="/"
@@ -241,7 +223,7 @@ export default function Blog() {
         </div>
       </div>
 
-      <Rocket className="absolute top-10 right-10 z-40 w-4 h-4 cursor-pointer pointer-events-auto" onClick={() => navigate('/founder')} />
+
     </div>
   );
 }

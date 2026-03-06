@@ -14,5 +14,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "AgentProfile.jsx", "AgentsPage.jsx"]
+  "include": ["src", "pages", "components", "styles"]
 }

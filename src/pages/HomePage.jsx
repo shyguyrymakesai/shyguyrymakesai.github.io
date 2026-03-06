@@ -6,7 +6,6 @@ import heroImage from "../assets/hero.jpg";
 import demoImage from "../assets/Demo_SS.png";
 import Navbar from "../components/Navbar";
 import { SparklesCore } from "../components/SparklesCore";
-import Rocket from "../components/Rocket";
 
 export default function HomePage() {
   const [typedText] = useTypewriter({
@@ -38,10 +37,10 @@ export default function HomePage() {
             className="absolute inset-0 w-full h-full object-contain opacity-30 pointer-events-none"
           />
           <div className="relative z-10 space-y-4">
-            <h1 className="text-6xl font-extrabold tracking-tight">Ryan Martinez</h1>
-            <p className="text-xl text-gray-700 max-w-xl mx-auto h-8">
+            <h1 className="text-6xl font-extrabold tracking-tight dark:text-white">Ryan Martinez</h1>
+            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-xl mx-auto h-8">
               {typedText}
-              <Cursor cursorColor="#000" />
+              <Cursor cursorColor="currentColor" />
             </p>
           </div>
         </motion.section>
@@ -55,24 +54,24 @@ export default function HomePage() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl font-bold text-center mb-10">Featured Projects</h2>
+          <h2 className="text-3xl font-bold text-center mb-10 dark:text-white">Featured Projects</h2>
           
           {/* AI Assistant Project */}
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-20">
-              <Link to="/projects/ai-assistant" className="rounded-xl overflow-hidden shadow-lg border bg-white dark:bg-carbon-700 block">
+              <a href="https://github.com/shyguyrymakesai/WhatsApp_AI_Agent" target="_blank" rel="noopener noreferrer" className="rounded-xl overflow-hidden shadow-lg border bg-white dark:bg-carbon-700 block">
               <img
                 src={demoImage}
                 alt="AI Assistant Demo"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
-            </Link>
+            </a>
             <div>
-              <h2 className="text-3xl font-bold mb-4">AI Appointment Assistant</h2>
-              <p className="text-gray-700 mb-6 leading-relaxed">
+              <h2 className="text-3xl font-bold mb-4 dark:text-white">AI Appointment Assistant</h2>
+              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
                 A full-stack AI assistant deployed through WhatsApp. It handles appointment scheduling, natural language queries, memory-driven follow-ups, and service walkthroughs.
                 Built with LangChain for tool routing, FastAPI for backend logic, and deployed via Docker for real-world testing.
               </p>
-              <ul className="flex flex-wrap gap-3 text-sm text-gray-600 mb-6">
+              <ul className="flex flex-wrap gap-3 text-sm text-gray-600 dark:text-gray-400 mb-6">
                 {['LangChain', 'FastAPI', 'Tool Routing', 'Memory', 'Docker'].map((tag) => (
                   <li
                     key={tag}
@@ -87,7 +86,7 @@ export default function HomePage() {
                   href="https://github.com/shyguyrymakesai/WhatsApp_AI_Agent"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-8 py-3 text-lg font-semibold border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 hover:text-blue-800 transition"
+                  className="inline-block px-8 py-3 text-lg font-semibold border-2 border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400 rounded-full hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-800 dark:hover:text-blue-300 transition"
                 >
                   Explore My Live Agents →
                 </a>
@@ -116,7 +115,7 @@ export default function HomePage() {
               <div className="mt-6 text-center md:text-left">
                 <Link
                   to="/demo"
-                  className="inline-block px-8 py-3 text-lg font-semibold border-2 border-purple-600 text-purple-600 rounded-full hover:bg-purple-50 hover:text-purple-800 transition"
+                  className="inline-block px-8 py-3 text-lg font-semibold border-2 border-purple-600 text-purple-600 dark:border-purple-400 dark:text-purple-400 rounded-full hover:bg-purple-50 dark:hover:bg-purple-900/30 hover:text-purple-800 dark:hover:text-purple-300 transition"
                 >
                   Try It Out →
                 </Link>
@@ -142,8 +141,8 @@ export default function HomePage() {
           transition={{ duration: 0.6 }}
         >
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-4">About Me</h2>
-            <p className="text-gray-700 leading-relaxed">
+            <h2 className="text-3xl font-bold mb-4 dark:text-white">About Me</h2>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               I'm a developer with a passion for autonomous AI systems. After leaving the University of Pennsylvania to refocus and rebuild, I dedicated myself to building tools that actually work — fast, smart, and solo. I'm actively seeking remote or Indiana-based roles in AI engineering, automation, or backend systems.
             </p>
           </div>
@@ -159,36 +158,36 @@ export default function HomePage() {
           transition={{ duration: 0.6 }}
         >
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-8">Resume</h2>
+            <h2 className="text-3xl font-bold text-center mb-8 dark:text-white">Resume</h2>
             <div className="space-y-10">
               <div>
-                <h3 className="text-xl font-semibold mb-2">Technical Projects</h3>
-                <p className="font-medium">AI Assistant (Solo Project) | Python, FastAPI, LangChain, WhatsApp API</p>
-                <ul className="list-disc list-inside text-gray-700 ml-4">
+                <h3 className="text-xl font-semibold mb-2 dark:text-white">Technical Projects</h3>
+                <p className="font-medium dark:text-gray-200">AI Assistant (Solo Project) | Python, FastAPI, LangChain, WhatsApp API</p>
+                <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 ml-4">
                   <li>Built a WhatsApp-based AI assistant handling bookings, service explanations, and multi-turn memory</li>
                   <li>Implemented LangChain routing with FastAPI backend and deployed locally with Docker</li>
                   <li>Used JSON-based memory system and custom error-handling architecture</li>
                 </ul>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Professional Experience</h3>
+                <h3 className="text-xl font-semibold mb-2 dark:text-white">Professional Experience</h3>
                 <div className="space-y-4">
                   <div>
-                    <p className="font-medium">Cybersecurity Analyst Intern – Anderson University | May – Aug 2023</p>
-                    <ul className="list-disc list-inside text-gray-700 ml-4">
+                    <p className="font-medium dark:text-gray-200">Cybersecurity Analyst Intern – Anderson University | May – Aug 2023</p>
+                    <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 ml-4">
                       <li>Drafted a 200-page System Security Plan (SSP) for SMB clients with co-led team</li>
                       <li>Co-authored 3 white papers on threat vectors and InfoSec practices</li>
                     </ul>
                   </div>
                   <div>
-                    <p className="font-medium">Undergraduate Research Assistant – Dr. Wang’s Lab, UPenn | May – Aug 2020</p>
-                    <ul className="list-disc list-inside text-gray-700 ml-4">
+                    <p className="font-medium dark:text-gray-200">Undergraduate Research Assistant – Dr. Wang's Lab, UPenn | May – Aug 2020</p>
+                    <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 ml-4">
                       <li>Supported ML research on patient outcome forecasting using healthcare datasets</li>
                     </ul>
                   </div>
                   <div>
-                    <p className="font-medium">Data Engineering / ML Intern – Jobcase Inc. | June – Aug 2019</p>
-                    <ul className="list-disc list-inside text-gray-700 ml-4">
+                    <p className="font-medium dark:text-gray-200">Data Engineering / ML Intern – Jobcase Inc. | June – Aug 2019</p>
+                    <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 ml-4">
                       <li>Built ETL pipelines and a prototype data lake using Apache Spark</li>
                       <li>Visualized engagement insights for civic outreach partnerships</li>
                     </ul>
@@ -196,16 +195,16 @@ export default function HomePage() {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Technical Skills</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold mb-2 dark:text-white">Technical Skills</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   <strong>Languages & Tools:</strong> Python, Java, Bash, HTML/CSS, Git, Docker, Unix CLI<br />
                   <strong>Frameworks & Libraries:</strong> FastAPI, LangChain, TensorFlow, Pandas, Apache Spark<br />
                   <strong>Systems & Dev:</strong> REST APIs, LLM Tool Routing, Uvicorn, Virtualenv, VS Code, Postman
                 </p>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Education</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold mb-2 dark:text-white">Education</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   University of Pennsylvania<br />
                   Completed 33.5 CUs toward B.S. in Computer Science (Engineering) & Economics (Wharton)<br />
                   2018–2024
